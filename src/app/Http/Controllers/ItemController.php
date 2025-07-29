@@ -13,16 +13,22 @@ class ItemController extends Controller
 {
     public function index(Request $request)
     {
-        $tab = $request->query('tab');
+    $tab = $request->query('tab');
 
-        if ($tab === 'mylist') {
-            $items = Item::where('user_id', auth()->id())->get();
+    if ($tab === 'mylist') {
+        if (auth()->check()) {
+            // いいねした商品のみ
+            $items = Item::whereIn('id', Like::where('user_id', auth()->id())->pluck('item_id'))->get();
         } else {
-            $items = Item::all();
+            // 未認証なら空
+            $items = collect();
         }
-
-        return view('items.index', compact('items', 'tab'));
+    } else {
+        $items = Item::all();
     }
+
+    return view('items.index', compact('items', 'tab'));
+}
 
     public function show($id)
     {

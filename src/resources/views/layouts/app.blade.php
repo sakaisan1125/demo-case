@@ -12,29 +12,27 @@
 <body>
 
   <header class="header">
-    <div class="header__left">
-      <img src="{{ asset('images/coachtech-logo.svg') }}" alt="COACHTECH ロゴ">
-    </div>
-
-    <div class="header__center">
-      <form action="{{ route('items.index') }}" method="GET">
-        <input type="text" name="keyword" placeholder="なにをお探しですか？">
-      </form>
-    </div>
-
-    <div class="header__right">
-      {{-- <a href="{{ route('login') }}">ログイン</a> --}}
-      {{-- <a href="{{ route('mypage.index') }}">マイページ</a> --}}
-      {{-- <a href="{{ route('items.create') }}">出品</a> --}}
-
-    </div>
-
-    <form method="POST" action="{{ route('logout') }}" class="logout-form">
-    @csrf
-    <button type="submit" class="logout-btn">ログアウト</button>
-    </form>
-
-
+      <div class="header__left">
+        <img src="{{ asset('images/coachtech-logo.svg') }}" alt="COACHTECH ロゴ">
+      </div>
+      <div class="header__center">
+        <form action="{{ route('items.index') }}" method="GET">
+          <input type="text" name="keyword" placeholder="なにをお探しですか？">
+        </form>
+      </div>
+      <div class="header__right">
+        @auth
+          <form method="POST" action="{{ route('logout') }}" class="logout-form">
+            @csrf
+            <button type="submit" class="logout-btn">ログアウト</button>
+          </form>
+        @endauth
+        @guest
+          <a href="{{ route('login') }}" class="login-btn">ログイン</a>
+        @endguest
+        <a href="{{ route('mypage.index') }}" class="mypage-btn">マイページ</a>
+        <a href="{{ route('items.create') }}" class="item-create-btn">出品</a>
+      </div>
   </header>
 
   <main class="container">

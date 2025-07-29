@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
+use App\Http\Requests\ProfileRequest;
 
 class MypageController extends Controller
 {
@@ -29,20 +30,29 @@ class MypageController extends Controller
     }
 
     // プロフィール更新処理
-    public function updateProfile(Request $request)
+    public function updateProfile(ProfileRequest $request)
     {
-        $user = Auth::user();
+        $user = Auth::user(); // 現在ログイン中のユーザーを取得
 
-        // バリデーション（最低限例。項目は適宜追加）
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            // 他プロフィール項目があればここに
-        ]);
+        $data = $request->validated(); // ProfileRequestでバリデーション済みのデータを取得
 
-        $user->update($validated);
+        // 画像アップロード
+        if ($request->hasFile('profile_image')) { // 画像がアップロードされているか確認
+            // 古い画像がある場合は削除
+            if ($user->profile_image && \Storage::disk('public')->exists($user->profile_image)) {
+                \Storage::disk('public')->delete($user->profile_image); // 古い画像ファイルを削除
+            }
+            $path = $request->file('profile_image')->store('profiles', 'public'); // 新しい画像を保存
+            $data['profile_image'] = $path; // 保存先パスを$dataにセット
+        } else {
+            // 画像未選択ならprofile_imageは更新しない
+            unset($data['profile_image']); // profile_imageキーを削除し、既存画像を保持
+        }
+
+        $user->update($data); // ユーザー情報を更新
 
         return redirect()->route('mypage.index')->with('success', 'プロフィールを更新しました');
+        // マイページにリダイレクトし、成功メッセージを表示
     }
 
 }

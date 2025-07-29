@@ -110,15 +110,14 @@ body {
 }
 
 .header {
-    width: 100vw;
-    /* 画面幅いっぱい */
-    background: #000;
+    background-color: #000;
     color: #fff;
-    padding: 20px 30px;
-    /* 上下左右お好みで */
-    height: 60px;
+    padding: 8px 12px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    height: auto;
+    /* 必要ならheight: 60px; を削除 */
 }
 
 

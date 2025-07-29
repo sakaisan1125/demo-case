@@ -4,7 +4,8 @@
     background: #fff;
     padding: 36px 32px 28px 32px;
     border-radius: 8px;
-    box-shadow: 0 2px 12px #0001;
+    box-shadow: 0 4px 24px #0002;
+    /* シャドウを強めに */
     text-align: center;
 }
 
@@ -16,6 +17,11 @@
 
 .profile-image-area {
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* 左寄せ */
+    text-align: left;
 }
 
 .profile-avatar {
@@ -26,6 +32,8 @@
     display: inline-block;
     object-fit: cover;
     vertical-align: middle;
+    margin-right: 24px;
+    /* ボタンとの間隔 */
 }
 
 .profile-avatar-default {
@@ -34,13 +42,14 @@
 
 .image-upload-btn {
     display: inline-block;
-    margin-left: 16px;
-    color: #fff;
-    background: #ff6a6a;
+    color: #ff6a6a;
+    background: #fff;
+    border: 1px solid #ff6a6a;
     padding: 6px 16px;
     border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
+    margin-left: 0;
 }
 
 .form-group {
@@ -77,4 +86,16 @@
 
 .profile-update-btn:hover {
     background: #e44;
+}
+
+.error-message {
+    display: inline-block;
+    min-width: 120px;
+    min-height: 18px;
+    color: #d00;
+    font-size: 13px;
+    margin-left: 8px;
+    margin-top: 0;
+    line-height: 1.2;
+    white-space: nowrap;
 }

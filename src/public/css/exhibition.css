@@ -1,137 +1,146 @@
+body {
+    background: #fff;
+}
+
 .exhibition-container {
-    max-width: 420px;
+    max-width: 600px;
     margin: 40px auto 0 auto;
     background: #fff;
-    border-radius: 12px;
-    padding: 36px 32px 36px 32px;
-    box-shadow: 0 4px 16px #0001;
+    padding: 0 0 32px 0;
+    border-radius: 0;
+    box-shadow: none;
 }
 
-.exhibition-container h2 {
+h2 {
     text-align: center;
-    font-size: 20px;
+    margin: 32px 0 32px 0;
+    font-size: 1.7rem;
     font-weight: bold;
-    margin-bottom: 34px;
 }
 
-/* --- フォーム各要素 --- */
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 24px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.form-group label {
-    font-weight: bold;
-    font-size: 15px;
+.image-upload-group label {
     display: block;
-    margin-bottom: 7px;
+    margin-bottom: 8px;
+    font-weight: bold;
 }
 
-input[type="text"],
-input[type="number"],
-input[type="file"],
-select,
-textarea {
-    width: 100%;
-    padding: 11px 12px;
-    border: 1.2px solid #ccc;
-    border-radius: 7px;
-    background: #fafafa;
-    font-size: 15px;
-    margin-bottom: 3px;
-    transition: border 0.2s;
-}
-
-input[type="file"] {
-    border: 2px dashed #ff6666;
+.image-drop-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px dashed #ff5c5c;
+    border-radius: 8px;
+    height: 100px;
     background: #fff;
-    padding: 26px 0 26px 12px;
+    cursor: pointer;
+    margin-bottom: 16px;
+    font-size: 1.1rem;
+    color: #ff5c5c;
+    position: relative;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.image-drop-area span {
+    margin: 0 auto;
     text-align: center;
-    color: #ff6666;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-    outline: none;
-    border: 1.5px solid #ff6666;
-    background: #fff;
-}
-
-/* --- カテゴリー複数選択 --- */
-select[multiple] {
-    min-height: 80px;
-    background: #fff;
-}
-
-/* --- エラーメッセージ --- */
-.error-message ul {
-    margin: 0 0 16px 0;
-    padding: 0 0 0 16px;
-}
-
-.error-message li {
-    color: #e63946;
-    font-size: 13px;
-}
-
-/* --- 出品ボタン --- */
-.exhibition-btn {
     width: 100%;
-    padding: 14px 0;
-    background: #ff6666;
-    color: #fff;
-    border: none;
-    border-radius: 7px;
-    font-size: 16px;
-    font-weight: bold;
-    margin-top: 30px;
-    letter-spacing: 1px;
+    display: block;
+}
+
+.image-drop-area input[type="file"] {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
     cursor: pointer;
-    transition: background 0.2s;
 }
 
-.exhibition-btn:hover {
-    background: #ff4d4d;
-}
-
-/* --- 必須マークサンプル --- */
-.form-group label.required::after {
-    content: "※";
-    color: #ff6666;
-    margin-left: 4px;
-    font-size: 13px;
-    vertical-align: middle;
+.section-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 24px 0 12px 0;
+    color: #222;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .category-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px 10px;
-    margin-bottom: 16px;
+    gap: 12px;
+    margin-top: 8px;
 }
 
 .category-tag {
-    display: inline-flex;
-    align-items: center;
-    cursor: pointer;
-    margin: 0 4px 8px 0;
-}
-
-.category-tag span {
-    padding: 2px 14px;
+    border: 1.5px solid #ff5c5c;
+    color: #ff5c5c;
     border-radius: 16px;
-    border: 1.5px solid #FF6B6B;
-    color: #FF6B6B;
+    padding: 4px 18px;
+    font-size: 15px;
     background: #fff;
-    font-size: 13px;
-    transition: all .2s;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
     user-select: none;
 }
 
+
 .category-tag input:checked+span {
-    background: #FF6B6B;
+    background: #ff5c5c;
     color: #fff;
-    border-color: #FF6B6B;
+    border-radius: 16px;
+    padding: 4px 18px;
+}
+
+select,
+input[type="text"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    background: #fff;
+}
+
+.exhibition-btn {
+    width: 80%;
+    display: block;
+    margin: 32px auto 0 auto;
+    background: #ff5c5c;
+    color: #fff;
+    font-weight: bold;
+    padding: 15px 0;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.17rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: background 0.18s;
+}
+
+.exhibition-btn:hover {
+    background: #ff3c3c;
+}
+
+.error-message {
+    margin-bottom: 16px;
+    width: 80%;
+    margin-left: auto;
+    margin-right:auto;
+    margin-right: auto;
 }

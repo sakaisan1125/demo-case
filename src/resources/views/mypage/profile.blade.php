@@ -26,16 +26,25 @@
         <div class="form-group">
             <label for="name">ユーザー名</label>
             <input type="text" name="name" id="name" value="{{ old('name', $user->name) }}">
+            @error('name')
+                <span class="error-message" style="color:#d00; font-size:13px;">{{ $message }}</span>
+            @enderror
         </div>
 
         <div class="form-group">
             <label for="zipcode">郵便番号</label>
             <input type="text" name="zipcode" id="zipcode" value="{{ old('zipcode', $user->zipcode) }}">
+            @error('zipcode')
+                <span class="error-message" style="color:#d00; font-size:13px;">{{ $message }}</span>
+            @enderror
         </div>
 
         <div class="form-group">
             <label for="address">住所</label>
             <input type="text" name="address" id="address" value="{{ old('address', $user->address) }}">
+            @error('address')
+                <span class="error-message" style="color:#d00; font-size:13px;">{{ $message }}</span>
+            @enderror
         </div>
 
         <div class="form-group">
