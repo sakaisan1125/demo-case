@@ -1,0 +1,165 @@
+.item-detail-container {
+    display: flex;
+    gap: 48px;
+    max-width: 1000px;
+    margin: 48px auto;
+    align-items: flex-start;
+    background: none;
+}
+
+.item-detail-image img {
+    width: 320px;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 8px;
+    background: #eee;
+    display: block;
+}
+
+.item-detail-info {
+    flex: 1;
+    min-width: 320px;
+}
+
+.item-detail-info h2 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.item-price {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+.buy-btn,
+.comment-btn {
+    display: block;
+    width: 100%;
+    padding: 14px 0;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    background: #f44;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.buy-btn:hover,
+.comment-btn:hover {
+    background: #c00;
+}
+
+.item-description h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.item-description p {
+    margin-bottom: 16px;
+}
+
+@media (max-width: 800px) {
+    .item-detail-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .item-detail-image img {
+        margin-bottom: 32px;
+    }
+
+    .item-detail-info {
+        width: 100%;
+    }
+}
+
+.section-title {
+    font-weight: bold;
+    font-size: 18px;
+    padding-bottom: 10px;
+}
+
+.item-section {
+    padding: 5px 0;
+}
+
+.category-badge {
+    background-color: #c2c2c2;
+    color: #000000;
+    border-radius: 24px;
+    padding: 4px 16px;
+    margin-left: 10px;
+}
+
+.item-condition {
+    margin-top: 10px;
+}
+
+.item-condition-badge {
+    margin-left: 18px;
+}
+
+.category-label,
+.item-condition-label,
+.item-comment {
+    font-weight: bold;
+}
+
+.avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #c2c2c2;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.comment-box {
+    background-color: #d6d4d4;
+    width: 100%;
+    padding: 10px 5px;
+    box-shadow:none;
+    border: none;
+    margin: 8px 0;
+}
+
+.comment-textarea {
+    width:100%;
+}
+.like-area {
+    margin-top: 10px;
+}
+
+.like-btn {
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.2s;
+    vertical-align: middle;
+}
+
+.like-btn.liked {
+    color: #e74c3c;
+}
+
+.like-btn.disabled {
+    color: #ddd;
+    cursor: not-allowed;
+}
+
+.like-count {
+    margin-left: 4px;
+    font-size: 15px;
+    color: #666;
+}

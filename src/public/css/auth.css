@@ -1,0 +1,127 @@
+body {
+    background: #fff;
+}
+
+.register-wrap {
+    margin: 0 auto;
+    margin-top: 70px;
+    max-width: 540px;
+    width: 100%;
+    background: none;
+    box-shadow: none;
+    padding: 0 0 80px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.register-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 48px;
+    margin-top: 0;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.register-form {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.register-group {
+    margin-bottom: 36px;
+}
+
+.register-group label {
+    font-size: 1.07rem;
+    font-weight: bold;
+    margin-bottom: 12px;
+    display: inline-block;
+    letter-spacing: 1px;
+}
+
+.register-group input[type="text"],
+.register-group input[type="email"],
+.register-group input[type="password"] {
+    width: 100%;
+    padding: 14px 12px;
+    font-size: 1.03rem;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    background: #fff;
+    margin-top: 6px;
+    box-sizing: border-box;
+    transition: border 0.2s;
+}
+
+.register-group input:focus {
+    outline: none;
+    border: 2px solid #ff6b6b;
+}
+
+.form-error {
+    color: #ff3838;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.register-btn {
+    width: 100%;
+    background: #ff5c5c;
+    color: #fff;
+    font-weight: bold;
+    padding: 15px 0;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.17rem;
+    letter-spacing: 2px;
+    margin-top: 14px;
+    cursor: pointer;
+    transition: background 0.18s;
+    margin-bottom: 24px;
+}
+
+.register-btn:hover {
+    background: #ff3c3c;
+}
+
+.register-link {
+    text-align: center;
+}
+
+.register-link a {
+    color: #35a5ff;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+}
+
+.header {
+    width: 100vw;
+    /* 画面幅いっぱい */
+    background: #000;
+    color: #fff;
+    padding: 20px 30px;
+    /* 上下左右お好みで */
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+
+.header__left img {
+    height: 30px;
+}

@@ -1,0 +1,64 @@
+/* すべてのページ共通のリセット */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* ヘッダー */
+.header {
+    background-color: #000;
+    color: #fff;
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__left img {
+    height: 30px;
+}
+
+.header__center input[type="text"] {
+    width: 500px;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 4px;
+}
+
+.header__right a {
+    color: #fff;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.header__right a:hover {
+    text-decoration: underline;
+}
+
+.logout-form {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.logout-btn {
+    padding: 8px 20px;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.logout-btn:hover {
+    background: #2e2727;
+}

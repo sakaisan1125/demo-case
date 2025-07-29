@@ -1,0 +1,80 @@
+.profile-container {
+    max-width: 420px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 36px 32px 28px 32px;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px #0001;
+    text-align: center;
+}
+
+.profile-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 24px;
+}
+
+.profile-image-area {
+    margin-bottom: 20px;
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #ccc;
+    display: inline-block;
+    object-fit: cover;
+    vertical-align: middle;
+}
+
+.profile-avatar-default {
+    background: #ccc;
+}
+
+.image-upload-btn {
+    display: inline-block;
+    margin-left: 16px;
+    color: #fff;
+    background: #ff6a6a;
+    padding: 6px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fafafa;
+}
+
+.profile-update-btn {
+    width: 100%;
+    padding: 12px 0;
+    background: #ff6a6a;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.profile-update-btn:hover {
+    background: #e44;
+}
