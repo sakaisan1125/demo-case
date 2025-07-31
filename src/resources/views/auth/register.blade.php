@@ -12,25 +12,25 @@
 
     <div class="register-group">
       <label for="name">ユーザー名</label>
-      <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus>
+      <input id="name" type="text" name="name" value="{{ old('name') }}"  autofocus>
       @error('name') <div class="form-error">{{ $message }}</div> @enderror
     </div>
 
     <div class="register-group">
       <label for="email">メールアドレス</label>
-      <input id="email" type="email" name="email" value="{{ old('email') }}" required>
+      <input id="email" type="email" name="email" value="{{ old('email') }}" r>
       @error('email') <div class="form-error">{{ $message }}</div> @enderror
     </div>
 
     <div class="register-group">
       <label for="password">パスワード</label>
-      <input id="password" type="password" name="password" required autocomplete="new-password">
+      <input id="password" type="password" name="password" autocomplete="new-password">
       @error('password') <div class="form-error">{{ $message }}</div> @enderror
     </div>
 
     <div class="register-group">
       <label for="password_confirmation">確認用パスワード</label>
-      <input id="password_confirmation" type="password" name="password_confirmation" required>
+      <input id="password_confirmation" type="password" name="password_confirmation">
     </div>
 
     <button type="submit" class="register-btn">登録する</button>

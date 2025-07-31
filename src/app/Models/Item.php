@@ -9,6 +9,16 @@ class Item extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'description',
+        'image_path',
+        'condition',
+        'price',
+        'user_id',
+        // 必要なら他のカラムも追加
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -32,6 +42,5 @@ class Item extends Model
     public function purchase()
     {
         return $this->hasOne(Purchase::class);
-    }
-
+        }
 }

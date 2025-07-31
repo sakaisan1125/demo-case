@@ -54,10 +54,8 @@
 
 
     {{-- 購入ボタン --}}
-    <form action="#" method="POST">
-      @csrf
-      <button type="submit" class="buy-btn">購入手続きへ</button>
-    </form>
+   {{-- 購入ボタン（formからaタグに変更） --}}
+    <a href="{{ route('purchase.show', $item->id) }}" class="buy-btn">購入手続きへ</a>
 
     {{-- 商品説明 --}}
     <div class="item-section">
