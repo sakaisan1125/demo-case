@@ -1,15 +1,15 @@
 <?php
 
 return [
-    'required' => ':attribute を入力してください',
-    'email' => ':attribute には有効なメールアドレスを入力してください。',
+    'required' => ':attributeを入力してください',
+    'email' => ':attributeには有効なメールアドレスを入力してください。',
     'min' => [
         'string' => ':attribute は :min 文字以上で入力してください。',
     ],
     'max' => [
         'string' => ':attribute は :max 文字以内で入力してください。',
     ],
-    'confirmed' => ':attribute の確認が一致しません。',
+    'confirmed' => ':attribute と一致しません。',
     // 必要に応じて追加してください
     'attributes' => [
     'email' => 'メールアドレス',
