@@ -2,27 +2,20 @@
 
 return [
     'required' => ':attributeを入力してください',
-    'email' => ':attributeには有効なメールアドレスを入力してください。',
+    'email' => ':attributeはメール形式で入力してください',
     'min' => [
-        'string' => ':attribute は :min 文字以上で入力してください。',
+        'string' => ':attributeは:min文字以上で入力してください',
     ],
     'max' => [
-        'string' => ':attribute は :max 文字以内で入力してください。',
+        'string' => ':attributeは:max文字以内で入力してください',
     ],
-    'confirmed' => ':attribute と一致しません。',
-    // 必要に応じて追加してください
+    'confirmed' => ':attributeと一致しません',        // 🔧 修正
+    'unique' => 'この:attributeは既に登録されています',        // 🔧 追加
+
     'attributes' => [
-    'email' => 'メールアドレス',
-    'password' => 'パスワード',
-],
+        'name' => 'ユーザー名',                              // 🔧 追加
+        'email' => 'メールアドレス',
+        'password' => 'パスワード',
+        'password_confirmation' => '確認用パスワード',         // 🔧 追加
+    ],
 ];
-
-// バリデーションエラーと認証エラーの違い
-// バリデーションエラー
-// → 入力値が「空」「形式が違う」など、フォーム送信時にLaravelのバリデーションで検出されるエラー
-// → validation.php の内容や FormRequest の messages() で制御できる
-
-// 認証エラー（ログイン情報が間違っている）
-// → 入力値の形式は正しいが、「そのメールアドレス＋パスワードの組み合わせがDBに存在しない」場合
-// // → これはバリデーションではなく認証処理の結果なので、validation.php では制御できない
-// 「ログイン情報が登録されていません」は、バリデーションではなく認証エラーとして自分で処理する必要がある

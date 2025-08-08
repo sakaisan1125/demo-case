@@ -1,3 +1,4 @@
+/* item詳細ページ全体のレイアウト */
 .item-detail-container {
     display: flex;
     gap: 48px;
@@ -32,13 +33,13 @@
     margin-bottom: 16px;
 }
 
+/* ボタンスタイル */
 .buy-btn,
 .comment-btn {
     display: block;
     width: 100%;
     padding: 14px 0;
-    margin-bottom: 20px;
-    margin-top: 10px;
+    margin: 10px 0 20px 0;
     background: #f44;
     color: #fff;
     font-size: 16px;
@@ -46,11 +47,64 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    text-align: center;
 }
 
 .buy-btn:hover,
 .comment-btn:hover {
     background: #c00;
+}
+
+a.buy-btn {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    margin: 10px auto 20px auto;
+    padding: 14px 0;
+    background: #f44;
+    color: #fff !important;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+a.buy-btn:hover {
+    background: #c00;
+}
+
+.login-required a {
+    display: inline-block;
+    width: 100%;
+    padding: 14px 0;
+    margin: 10px 0 20px 0;
+    background: #f44;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+
+.login-required a:hover {
+    background: #c00;
+}
+
+/* セクションスタイル */
+.section-title {
+    font-weight: bold;
+    font-size: 18px;
+    padding-bottom: 10px;
+}
+
+.item-section {
+    padding: 5px 0;
 }
 
 .item-description h3 {
@@ -63,31 +117,7 @@
     margin-bottom: 16px;
 }
 
-@media (max-width: 800px) {
-    .item-detail-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .item-detail-image img {
-        margin-bottom: 32px;
-    }
-
-    .item-detail-info {
-        width: 100%;
-    }
-}
-
-.section-title {
-    font-weight: bold;
-    font-size: 18px;
-    padding-bottom: 10px;
-}
-
-.item-section {
-    padding: 5px 0;
-}
-
+/* カテゴリー・コンディション */
 .category-badge {
     background-color: #c2c2c2;
     color: #000000;
@@ -110,6 +140,56 @@
     font-weight: bold;
 }
 
+/* いいね・コメントエリア */
+.like-comment-area {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 15px 0;
+}
+
+.like-area,
+.comment-area {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.like-btn {
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.2s;
+    vertical-align: middle;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+}
+
+.like-btn.liked {
+    color: #e74c3c;
+}
+
+.like-btn.disabled {
+    color: #ddd;
+    cursor: not-allowed;
+}
+
+.like-count,
+.comment-count {
+    font-size: 15px;
+    color: #666;
+    line-height: 1;
+}
+
+.comment-icon {
+    font-size: 22px;
+    line-height: 1;
+}
+
+/* コメント関連 */
 .avatar {
     width: 20px;
     height: 20px;
@@ -127,61 +207,82 @@
     background-color: #d6d4d4;
     width: 100%;
     padding: 10px 5px;
-    box-shadow:none;
+    box-shadow: none;
     border: none;
     margin: 8px 0;
 }
 
 .comment-textarea {
-    width:100%;
-}
-.like-area {
-    margin-top: 10px;
-}
-
-.like-btn {
-    background: none;
-    border: none;
-    font-size: 22px;
-    color: #aaa;
-    cursor: pointer;
-    transition: color 0.2s;
-    vertical-align: middle;
-}
-
-.like-btn.liked {
-    color: #e74c3c;
-}
-
-.like-btn.disabled {
-    color: #ddd;
-    cursor: not-allowed;
-}
-
-.like-count {
-    margin-left: 4px;
-    font-size: 15px;
-    color: #666;
-}
-
-a.buy-btn {
-    display: block;
     width: 100%;
-    max-width: 600px;
-    margin: 10px auto 20px auto;
-    padding: 14px 0;
-    background: #f44;
-    color: #fff !important;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
+    padding: 10px;
+    border: 1px solid #ddd;
     border-radius: 4px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    /* 下線を消す */
+    font-family: inherit;
+    resize: vertical;
 }
 
-a.buy-btn:hover {
-    background: #c00;
+.no-comments {
+    background-color: #cccccc;
+    padding: 10px;
+}
+
+/* レスポンシブ */
+@media (max-width: 800px) {
+    .item-detail-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .item-detail-image img {
+        margin-bottom: 32px;
+    }
+
+    .item-detail-info {
+        width: 100%;
+    }
+}
+
+/* 無効化されたボタンの基本スタイル */
+.buy-btn.disabled {
+    background: #ccc !important;
+    color: #666 !important;
+    cursor: not-allowed;
+    opacity: 0.7;
+    position: relative;
+    pointer-events: none;
+    /* クリック無効化 */
+}
+
+.buy-btn.disabled:hover {
+    background: #ccc !important;
+    transform: none;
+    /* ホバーエフェクトを無効化 */
+}
+
+/* SOLDバッジ専用スタイル */
+.buy-btn.disabled.sold {
+    background: #999 !important;
+    color: #fff !important;
+    font-weight: bold;
+    opacity: 0.8;
+}
+
+.buy-btn.disabled.sold::before {
+    content: "🚫 ";
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+/* 自分の商品専用スタイル */
+.buy-btn.disabled:not(.sold)::before {
+    content: "👤 ";
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 800px) {
+    .buy-btn.disabled::before {
+        font-size: 12px;
+    }
 }

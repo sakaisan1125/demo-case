@@ -12,6 +12,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 // 認証済みユーザー情報を取得するためのファサードをインポート。
 // ログインユーザーの情報取得や認証チェックに使う。
+use App\Http\Requests\AddressRequest;
+// 住所に関するリクエストバリデーションを行うためのクラスをインポート。
+// 住所編集フォームの入力値を検証するために使用する。
 
 class AddressController extends Controller
 // AddressControllerクラスを定義。Controllerクラスを継承している。
@@ -37,34 +40,15 @@ class AddressController extends Controller
     }
 
     // 住所更新処理
-    public function update(Request $request)
+    public function update(AddressRequest $request)
     // 住所編集フォームからPOSTされたデータを受け取り、DBに保存するメソッド。
     // $requestにはフォームの入力値が入っている。
     {
-        $request->validate([
-            'zip' => 'required|string|max:10',
-            // zip（郵便番号）は必須、文字列、最大10文字までとバリデーション。
-            'address' => 'required|string|max:255',
-            // address（住所）は必須、文字列、最大255文字までとバリデーション。
-            'building' => 'nullable|string|max:255',
-            // building（建物名）は任意、文字列、最大255文字までとバリデーション。
-            // nullableなので、空でもOK。
-        ]);
-        // バリデーションに失敗した場合は自動的に前の画面にリダイレクトし、エラー内容を表示。
-
         $user = Auth::user();
-        // 再度、現在ログイン中のユーザー情報を取得。
-        // セキュリティのため、リクエストからuser_idを受け取らず、必ず認証情報から取得する。
-
         $user->zipcode = $request->input('zip');
-        // フォームから送信されたzip（郵便番号）をユーザーのzipプロパティに代入。
-
         $user->address = $request->input('address');
-        // フォームから送信されたaddress（住所）をユーザーのaddressプロパティに代入。
         $user->building = $request->input('building');
         $user->save();
-        // 変更したユーザー情報をDBに保存。
-        // これで住所情報が更新される。
 
         $itemId = session('last_item_id');
         if ($itemId) {

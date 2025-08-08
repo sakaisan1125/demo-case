@@ -41,4 +41,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/purchase/{item}', [App\Http\Controllers\PurchaseController::class, 'store'])->name('purchase.store');
     Route::get('/address/edit', [App\Http\Controllers\AddressController::class, 'edit'])->name('address.edit');
     Route::post('/address/update', [App\Http\Controllers\AddressController::class, 'update'])->name('address.update');
+    // コメント投稿
+    Route::post('/items/{item}/comments', [App\Http\Controllers\CommentController::class, 'store'])->name('comments.store');
 });

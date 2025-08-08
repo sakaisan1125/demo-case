@@ -57,6 +57,7 @@
     margin-bottom: 10px;
     border-radius: 8px;
     overflow: hidden;
+    position: relative;
 }
 
 .item-image {
@@ -84,4 +85,17 @@
 
 .item-card a {
     text-decoration: none;
+}
+
+.sold-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #ff2424;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 6px;
+    z-index: 2;
 }

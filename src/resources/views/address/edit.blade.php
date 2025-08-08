@@ -12,14 +12,17 @@
         <div class="form-group">
             <label for="zip">郵便番号</label>
             <input type="text" name="zip" id="zip" value="{{ old('zip', $user->zip) }}">
+            @error('zip') <div class="form-error">{{ $message }}</div> @enderror
         </div>
         <div class="form-group">
             <label for="address">住所</label>
             <input type="text" name="address" id="address" value="{{ old('address', $user->address) }}">
+            @error('address') <div class="form-error">{{ $message }}</div> @enderror
         </div>
         <div class="form-group">
             <label for="building">建物名</label>
             <input type="text" name="building" id="building" value="{{ old('building', $user->building ?? '') }}">
+            @error('building') <div class="form-error">{{ $message }}</div> @enderror
         </div>
         <button type="submit" class="address-edit-btn">更新する</button>
     </form>

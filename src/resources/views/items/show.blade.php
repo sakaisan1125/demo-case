@@ -4,13 +4,17 @@
   <link rel="stylesheet" href="{{ asset('css/show.css') }}">
 @endsection
 
-
 @section('content')
 <div class="item-detail-container">
 
   {{-- 画像エリア --}}
   <div class="item-detail-image">
-    <img src="{{ $item->image_path }}" alt="商品画像">
+    @if ($item->image_url)
+      {{-- ✅ アクセサーを使用（最も推奨） --}}
+      <img src="{{ $item->image_url }}" alt="商品画像">
+    @else
+      <div class="no-image">画像がありません</div>
+    @endif
   </div>
 
   {{-- 詳細情報エリア --}}
@@ -24,45 +28,72 @@
       ￥{{ number_format($item->price) }} <span class="tax-in">（税込）</span>
     </div>
 
-    {{-- いいね・コメントアイコン等（デザインによって後から） --}}
-    {{-- いいねボタン --}}
-  @auth
-    <div class="like-area">
-      @if (auth()->user()->likes->where('item_id', $item->id)->count())
-        <form action="{{ route('items.unlike', $item) }}" method="POST" style="display:inline;">
-          @csrf
-          @method('DELETE')
-          <button type="submit" class="like-btn liked">♥</button>
-        </form>
-      @else
-        <form action="{{ route('items.like', $item) }}" method="POST" style="display:inline;">
-          @csrf
-          <button type="submit" class="like-btn">♡</button>
-        </form>
-      @endif
-      <span class="like-count">{{ $item->likes->count() }}</span>
-    </div>
-  @endauth
+    {{-- いいね・コメントアイコン等 --}}
+    @auth
+      <div class="like-comment-area">
+        <div class="like-area">
+          @if (auth()->user()->likes->where('item_id', $item->id)->count())
+            <form action="{{ route('items.unlike', $item) }}" method="POST" style="display:inline;">
+              @csrf
+              @method('DELETE')
+              <button type="submit" class="like-btn liked">♥</button>
+            </form>
+          @else
+            <form action="{{ route('items.like', $item) }}" method="POST" style="display:inline;">
+              @csrf
+              <button type="submit" class="like-btn">♡</button>
+            </form>
+          @endif
+          <span class="like-count">{{ $item->likes->count() }}</span>
+        </div>
+        
+        {{-- コメント数表示 --}}
+        <div class="comment-area">
+          <span class="comment-icon">💬</span>
+          <span class="comment-count">{{ $item->comments->count() }}</span>
+        </div>
+      </div>
+    @endauth
 
-  {{-- 未ログインの場合はボタン非表示またはログイン誘導 --}}
-  @guest
-    <div class="like-area">
-      <span class="like-btn disabled" title="ログインしてください">♡</span>
-      <span class="like-count">{{ $item->likes->count() }}</span>
-    </div>
-  @endguest
-
+    {{-- 未ログインの場合 --}}
+    @guest
+      <div class="like-comment-area">
+        <div class="like-area">
+          <span class="like-btn disabled" title="ログインしてください">♡</span>
+          <span class="like-count">{{ $item->likes->count() }}</span>
+        </div>
+        
+        {{-- コメント数表示 --}}
+        <div class="comment-area">
+          <span class="comment-icon">💬</span>
+          <span class="comment-count">{{ $item->comments->count() }}</span>
+        </div>
+      </div>
+    @endguest
 
     {{-- 購入ボタン --}}
-   {{-- 購入ボタン（formからaタグに変更） --}}
-    <a href="{{ route('purchase.show', $item->id) }}" class="buy-btn">購入手続きへ</a>
+    @auth
+        @if ($item->user_id === auth()->id())
+            {{-- ✅ 自分の商品の場合 --}}
+            <span class="buy-btn disabled">自分の商品です</span>
+        @elseif ($item->is_sold)
+            {{-- ✅ 購入済みの場合 --}}
+            <span class="buy-btn disabled sold">SOLD</span>
+        @else
+            {{-- ✅ 購入可能 --}}
+            <a href="{{ route('purchase.show', $item->id) }}" class="buy-btn">購入手続きへ</a>
+        @endif
+    @else
+        {{-- ✅ 未ログインの場合 --}}
+        <a href="{{ route('login') }}" class="buy-btn">購入手続きへ</a>
+    @endauth
 
     {{-- 商品説明 --}}
     <div class="item-section">
       <div class="section-title">商品説明</div>
       <div class="item-description">
         <div>カラー：{{ $item->color ?? '未設定' }}</div>
-        <div>新品</div>
+        <div>{{ $item->condition }}</div>
         <div>{{ $item->description }}</div>
         <div>購入後、即発送いたします。</div>
       </div>
@@ -85,22 +116,32 @@
 
     {{-- コメント欄 --}}
     <div class="item-section">
-      <div class="section-title">コメント (1)</div>
-      {{-- コメント表示例（ダミー） --}}
-      <div class="comment">
-        <span class="avatar"></span>
-        <span class="username">admin</span>
-        <br>
-        <input class="comment-box" value="こちらにコメントが入ります。" readonly>
-      </div>
-      {{-- コメント投稿 --}}
-      <form action="#" method="POST">
-        @csrf
-        <div class="item-comment">商品へのコメント</div>
-        <textarea name="body" rows="10" class="comment-textarea"></textarea>
-        <br>
-        <button type="submit" class="comment-btn">コメントを送信する</button>
-      </form>
+      <div class="section-title">コメント ({{ $item->comments->count() }})</div>
+       {{-- 既存のコメント表示 --}}
+      @forelse($item->comments as $comment)
+        <div class="comment">
+          <span class="avatar"></span>
+          <span class="username">{{ $comment->user->name }}</span>
+          <br>
+          <div class="comment-box">{{ $comment->content }}</div>
+        </div>
+      @empty
+        <div class="no-comments">こちらにコメントが入ります。</div>
+      @endforelse
+      {{-- コメント投稿フォーム --}}
+      @auth
+        <form action="{{ route('comments.store', $item) }}" method="POST">
+          @csrf
+          <div class="item-comment">商品へのコメント</div>
+          <textarea name="content" rows="10" class="comment-textarea" required></textarea>
+          <br>
+          <button type="submit" class="comment-btn">コメントを送信する</button>
+        </form>
+      @else
+        <div class="login-required">
+          <a href="{{ route('login') }}">コメントを送信する</a>
+        </div>
+      @endauth
     </div>
   </div>
 </div>

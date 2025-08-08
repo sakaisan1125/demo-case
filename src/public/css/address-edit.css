@@ -58,3 +58,10 @@
 .address-edit-btn:hover {
     background: #e64545;
 }
+
+.form-error {
+    color: #ff5c5c;
+    font-size: 14px;
+    margin-top: 4px;
+    font-weight: 500;
+}

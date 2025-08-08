@@ -1,146 +1,257 @@
 body {
     background: #fff;
+    margin: 0;
+    padding: 0;
 }
 
 .exhibition-container {
-    max-width: 600px;
-    margin: 40px auto 0 auto;
+    max-width: 500px;
+    margin: 0 auto;
     background: #fff;
-    padding: 0 0 32px 0;
-    border-radius: 0;
-    box-shadow: none;
+    padding: 40px 20px;
 }
 
 h2 {
     text-align: center;
-    margin: 32px 0 32px 0;
-    font-size: 1.7rem;
+    margin: 0 0 40px 0;
+    font-size: 1.5rem;
     font-weight: bold;
+    color: #333;
 }
 
 .form-group {
-    margin-bottom: 24px;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+    margin-bottom: 32px;
 }
 
-.image-upload-group label {
+.section-label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     font-weight: bold;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+/* 画像アップロード関連 */
+.image-upload-group {
+    margin-bottom: 40px;
+}
+
+.image-upload-container {
+    width: 100%;
 }
 
 .image-drop-area {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1.5px dashed #ff5c5c;
+    border: 2px dashed #ccc;
     border-radius: 8px;
-    height: 100px;
-    background: #fff;
+    height: 200px;
+    background: #fafafa;
     cursor: pointer;
-    margin-bottom: 16px;
-    font-size: 1.1rem;
-    color: #ff5c5c;
-    position: relative;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+    transition: all 0.3s ease;
 }
 
-.image-drop-area span {
-    margin: 0 auto;
+.image-drop-area:hover {
+    border-color: #ff5c5c;
+    background: #fff5f5;
+}
+
+.image-select-btn {
+    background: #ff5c5c;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: inline-block;
+        /* ✅ 追加 */
+    pointer-events: auto;
+        /* ✅ 追加 */
+}
+
+#imagePreview {
     text-align: center;
-    width: 100%;
-    display: block;
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fafafa;
 }
 
-.image-drop-area input[type="file"] {
-    opacity: 0;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    cursor: pointer;
-}
-
+/* セクションタイトル */
 .section-title {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: bold;
-    margin: 24px 0 12px 0;
-    color: #222;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 40px 0 20px 0;
+    color: #333;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
 }
 
+/* カテゴリー関連 */
 .category-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 8px;
+    gap: 8px;
+    margin-top: 12px;
 }
 
 .category-tag {
-    border: 1.5px solid #ff5c5c;
+    border: 1px solid #ff9999;
     color: #ff5c5c;
-    border-radius: 16px;
-    padding: 4px 18px;
-    font-size: 15px;
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 0.8rem;
     background: #fff;
     cursor: pointer;
-    transition: background 0.2s, color 0.2s;
+    transition: all 0.2s ease;
     user-select: none;
+    display: inline-block;
 }
 
+.category-tag:hover {
+    border-color: #ff5c5c;
+    background: #fff5f5;
+}
 
-.category-tag input:checked+span {
+.category-tag input[type="checkbox"] {
+    display: none;
+}
+
+.category-tag:has(input:checked) {
     background: #ff5c5c;
     color: #fff;
-    border-radius: 16px;
-    padding: 4px 18px;
+    border-color: #ff5c5c;
 }
 
+/* フォーム要素 */
 select,
 input[type="text"],
 input[type="number"],
 textarea {
     width: 100%;
-    padding: 10px;
-    border: 1.5px solid #ccc;
+    padding: 12px 16px;
+    border: 1px solid #ddd;
     border-radius: 6px;
-    font-size: 1rem;
-    margin-top: 4px;
-    margin-bottom: 4px;
+    font-size: 0.9rem;
     background: #fff;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
 }
 
+select:focus,
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: #ff5c5c;
+    box-shadow: 0 0 0 2px rgba(255, 92, 92, 0.1);
+}
+
+/* セレクトボックス */
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* 価格入力 */
+.price-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.price-prefix {
+    position: absolute;
+    left: 16px;
+    color: #666;
+    font-size: 0.9rem;
+    z-index: 1;
+}
+
+.price-input-container input[type="number"] {
+    padding-left: 32px;
+}
+
+/* 出品ボタン */
 .exhibition-btn {
-    width: 80%;
-    display: block;
-    margin: 32px auto 0 auto;
+    width: 100%;
     background: #ff5c5c;
     color: #fff;
     font-weight: bold;
-    padding: 15px 0;
+    padding: 16px 0;
     border: none;
     border-radius: 6px;
-    font-size: 1.17rem;
-    letter-spacing: 2px;
+    font-size: 1rem;
     cursor: pointer;
-    transition: background 0.18s;
+    transition: background 0.2s ease;
+    margin-top: 32px;
 }
 
 .exhibition-btn:hover {
     background: #ff3c3c;
 }
 
+/* エラーメッセージ */
 .error-message {
-    margin-bottom: 16px;
-    width: 80%;
-    margin-left: auto;
-    margin-right:auto;
-    margin-right: auto;
+    margin-bottom: 24px;
+    background: #fff3f3;
+    border: 1px solid #ffcdd2;
+    border-radius: 6px;
+    padding: 16px;
+}
+
+.error-message ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.error-message li {
+    color: #d32f2f;
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .exhibition-container {
+        margin: 0;
+        padding: 20px 16px;
+        max-width: none;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+        margin-bottom: 30px;
+    }
+
+    .form-group {
+        margin-bottom: 24px;
+    }
+
+    .section-title {
+        margin: 30px 0 15px 0;
+        font-size: 0.95rem;
+    }
+
+    .category-tag {
+        font-size: 0.75rem;
+        padding: 5px 12px;
+    }
+
+    .image-drop-area {
+        height: 160px;
+    }
 }

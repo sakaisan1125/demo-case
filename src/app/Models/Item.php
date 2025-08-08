@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Item extends Model
 {
@@ -16,8 +17,26 @@ class Item extends Model
         'condition',
         'price',
         'user_id',
-        // 必要なら他のカラムも追加
+        'brand',
+        'is_sold',
     ];
+
+    // ✅ 画像URLを統一的に処理するアクセサー
+    public function getImageUrlAttribute()
+    {
+        if (!$this->image_path) {
+            return null;
+        }
+
+        // URLかどうかを判定
+        if (filter_var($this->image_path, FILTER_VALIDATE_URL)) {
+            // S3などの外部URL（シーダーデータ）
+            return $this->image_path;
+        } else {
+            // ローカルストレージ（新規出品データ）
+            return Storage::url($this->image_path);
+        }
+    }
 
     public function user()
     {
@@ -42,5 +61,5 @@ class Item extends Model
     public function purchase()
     {
         return $this->hasOne(Purchase::class);
-        }
+    }
 }

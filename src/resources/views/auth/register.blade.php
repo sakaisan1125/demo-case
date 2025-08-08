@@ -7,7 +7,7 @@
 @section('content')
 <div class="register-wrap">
   <div class="register-title">会員登録</div>
-  <form class="register-form" method="POST" action="{{ route('register') }}">
+  <form class="register-form" method="POST" action="{{ route('register') }}" novalidate>
     @csrf
 
     <div class="register-group">
@@ -18,7 +18,7 @@
 
     <div class="register-group">
       <label for="email">メールアドレス</label>
-      <input id="email" type="email" name="email" value="{{ old('email') }}" r>
+      <input id="email" type="text" name="email" value="{{ old('email') }}">
       @error('email') <div class="form-error">{{ $message }}</div> @enderror
     </div>
 

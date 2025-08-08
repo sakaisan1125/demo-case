@@ -8,31 +8,58 @@ use App\Models\Like;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ExhibitionRequest;
 
-
 class ItemController extends Controller
 {
     public function index(Request $request)
     {
-    $tab = $request->query('tab');
+        $tab = $request->query('tab');
+        $keyword = $request->query('keyword'); // ✅ 検索キーワード取得
 
-    if ($tab === 'mylist') {
-        if (auth()->check()) {
-            // いいねした商品のみ
-            $items = Item::whereIn('id', Like::where('user_id', auth()->id())->pluck('item_id'))->get();
+        if ($tab === 'mylist') {
+            if (auth()->check()) {
+                // ✅ 修正：いいねした商品IDを先に取得
+                $likedItemIds = Like::where('user_id', auth()->id())->pluck('item_id');
+                
+                // ✅ 修正：Itemクエリビルダーを作成
+                $items = Item::whereIn('id', $likedItemIds);
+
+                // ✅ 追加：自分の商品を除外
+                $items = $items->where('user_id', '!=', auth()->id());
+
+                // ✅ 検索条件追加（マイリストでも検索可能）
+                if ($keyword) {
+                    $items = $items->where('name', 'like', "%{$keyword}%");
+                }
+                
+                $items = $items->get();
+            } else {
+                // 未認証なら空
+                $items = collect();
+            }
         } else {
-            // 未認証なら空
-            $items = collect();
+            // ✅ 修正：全商品（自分の商品除外）
+            $items = Item::query();
+            
+            // ✅ 追加：ログイン時は自分の商品を除外
+            if (auth()->check()) {
+                $items = $items->where('user_id', '!=', auth()->id());
+            }
+            
+            // ✅ 検索条件追加
+            if ($keyword) {
+                $items = $items->where('name', 'like', "%{$keyword}%");
+            }
+            
+            $items = $items->get();
         }
-    } else {
-        $items = Item::all();
-    }
 
-    return view('items.index', compact('items', 'tab'));
+        // ✅ 検索キーワードもビューに渡す
+        return view('items.index', compact('items', 'tab', 'keyword'));
     }
 
     public function show($id)
     {
-        $item = \App\Models\Item::findOrFail($id);
+        $item = Item::with(['categories', 'likes', 'comments.user'])->findOrFail($id);
         return view('items.show', compact('item'));
     }
 
@@ -85,9 +112,4 @@ class ItemController extends Controller
         $user->likes()->where('item_id', $item->id)->delete();
         return back();
     }
-
-
-
-
-
 }

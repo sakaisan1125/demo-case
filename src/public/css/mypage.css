@@ -19,6 +19,19 @@
     background: #ddd;
     border-radius: 50%;
     display: inline-block;
+    position: relative;
+        /* ✅ 追加 */
+    overflow: hidden;
+        /* ✅ 追加 */
+}
+
+/* ✅ 追加：プロフィール画像のスタイル */
+.profile-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
 }
 
 .profile-info {

@@ -7,14 +7,19 @@
 @section('content')
 <form action="/purchase/{{ $item->id }}" method="POST">
   @csrf
+  
+  {{-- 追加：住所データを送信するためのhiddenフィールド --}}
+  <input type="hidden" name="address" value="{{ $user->address }}">
+  
   <div class="purchase-container">
     <div class="purchase-main">
         <div class="item-header">    
             <div class="item-image-placeholder">
-                @if ($item->image_path)
-                <img src="{{ $item->image_path }}" alt="商品画像" class="item-image">
+                @if ($item->image_url)
+                    {{-- ✅ 修正：アクセサーを使用 --}}
+                    <img src="{{ $item->image_url }}" alt="商品画像" class="item-image">
                 @else
-                <span class="item-image-text">商品画像</span>
+                    <span class="item-image-text">商品画像</span>
                 @endif
             </div>
             <div class="item-info">
@@ -23,14 +28,22 @@
             </div>
         </div>
       <hr>
+      
+      {{-- 🔧 追加：バリデーションエラー表示 --}}
+      @if ($errors->any())
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+      @endif
+      
       <div class="payment-area">
         <label>支払い方法</label>
         <select name="payment_method" id="payment_method" required class="payment-select">
           <option value="" hidden disabled selected>選択してください</option>
-          <!-- 「選択してください」は選択不可のダミー選択肢にし、
-          実際に選べるのは「コンビニ支払い」「カード支払い」の2択にしたい場合は、
-          <option value="">選択してください</option> に disabled selected を付ける -->
-          <!-- hidden を付けることで、ドロップダウンを開いたときに「選択してください」がリストに出ません。 -->
           <option value="convenience">コンビニ支払い</option>
           <option value="card">カード支払い</option>
         </select>
@@ -63,4 +76,13 @@
     </div>
   </div>
 </form>
+
+{{-- 🔧 追加：支払い方法の動的表示 --}}
+<script>
+document.getElementById('payment_method').addEventListener('change', function() {
+    const summaryElement = document.getElementById('summary-payment-method');
+    const selectedOption = this.options[this.selectedIndex];
+    summaryElement.textContent = selectedOption.text;
+});
+</script>
 @endsection
