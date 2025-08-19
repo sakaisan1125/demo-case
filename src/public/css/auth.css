@@ -124,3 +124,247 @@ body {
 .header__left img {
     height: 30px;
 }
+
+/* ✅ PC対応: 認証フォームレスポンシブ（中央寄せ修正版） */
+@media (min-width: 1400px) {
+    .register-wrap {
+        margin: 80px auto;
+        max-width: 700px;
+        padding: 0 30px 100px 30px;
+        /* ✅ 修正: left/transformを削除してmargin: autoのみ */
+    }
+
+    .register-title {
+        font-size: 2.5rem;
+        margin-bottom: 60px;
+        letter-spacing: 3px;
+    }
+
+    .register-form {
+        max-width: 500px;
+    }
+
+    .register-group {
+        margin-bottom: 40px;
+    }
+
+    .register-group label {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+        letter-spacing: 1.5px;
+    }
+
+    .register-group input[type="text"],
+    .register-group input[type="email"],
+    .register-group input[type="password"] {
+        padding: 16px 18px;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        border-width: 2px;
+        margin-top: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .register-group input:focus {
+        border: 2px solid #ff6b6b;
+        box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.1);
+        transform: translateY(-2px);
+    }
+
+    .register-group input:hover {
+        border-color: #ccc;
+    }
+
+    .form-error {
+        font-size: 14px;
+        margin-top: 8px;
+    }
+
+    .register-btn {
+        padding: 18px 0;
+        font-size: 1.3rem;
+        border-radius: 8px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        letter-spacing: 3px;
+        transition: all 0.3s ease;
+    }
+
+    .register-btn:hover {
+        background: #ff3c3c;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(255, 92, 92, 0.3);
+    }
+
+    .register-link {
+        margin-top: 10px;
+    }
+
+    .register-link a {
+        font-size: 16px;
+        transition: color 0.2s;
+    }
+
+    .register-link a:hover {
+        color: #2196f3;
+    }
+}
+
+@media (min-width: 1540px) {
+    .register-wrap {
+        margin: 100px auto;
+        max-width: 800px;
+        padding: 0 40px 120px 40px;
+        /* ✅ 修正: left/transformを削除してmargin: autoのみ */
+    }
+
+    .register-title {
+        font-size: 3rem;
+        margin-bottom: 70px;
+        letter-spacing: 4px;
+    }
+
+    .register-form {
+        max-width: 600px;
+    }
+
+    .register-group {
+        margin-bottom: 45px;
+    }
+
+    .register-group label {
+        font-size: 1.3rem;
+        margin-bottom: 18px;
+        letter-spacing: 2px;
+    }
+
+    .register-group input[type="text"],
+    .register-group input[type="email"],
+    .register-group input[type="password"] {
+        padding: 18px 20px;
+        font-size: 1.2rem;
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+
+    .form-error {
+        font-size: 15px;
+        margin-top: 10px;
+    }
+
+    .register-btn {
+        padding: 20px 0;
+        font-size: 1.4rem;
+        border-radius: 10px;
+        margin-top: 25px;
+        margin-bottom: 35px;
+        letter-spacing: 4px;
+    }
+
+    .register-link a {
+        font-size: 18px;
+    }
+}
+
+/* ✅ タブレット対応の改善 */
+@media (min-width: 768px) and (max-width: 1399px) {
+    .register-wrap {
+        margin: 75px auto;
+        max-width: 600px;
+        padding: 0 30px 90px 30px;
+    }
+
+    .register-title {
+        font-size: 2.2rem;
+        margin-bottom: 50px;
+        letter-spacing: 2.5px;
+    }
+
+    .register-form {
+        max-width: 450px;
+    }
+
+    .register-group {
+        margin-bottom: 38px;
+    }
+
+    .register-group label {
+        font-size: 1.1rem;
+        margin-bottom: 13px;
+    }
+
+    .register-group input[type="text"],
+    .register-group input[type="email"],
+    .register-group input[type="password"] {
+        padding: 15px 14px;
+        font-size: 1.05rem;
+        border-radius: 6px;
+    }
+
+    .register-btn {
+        padding: 16px 0;
+        font-size: 1.2rem;
+        margin-top: 16px;
+        margin-bottom: 26px;
+    }
+
+    .register-link a {
+        font-size: 15px;
+    }
+}
+
+/* ✅ モバイル対応の改善 */
+@media (max-width: 767px) {
+    .register-wrap {
+        margin: 40px auto;
+        max-width: 100%;
+        padding: 0 20px 60px 20px;
+    }
+
+    .register-title {
+        font-size: 1.7rem;
+        margin-bottom: 35px;
+        letter-spacing: 1.5px;
+    }
+
+    .register-form {
+        max-width: 100%;
+    }
+
+    .register-group {
+        margin-bottom: 28px;
+    }
+
+    .register-group label {
+        font-size: 1rem;
+        margin-bottom: 10px;
+        letter-spacing: 0.5px;
+    }
+
+    .register-group input[type="text"],
+    .register-group input[type="email"],
+    .register-group input[type="password"] {
+        padding: 12px 10px;
+        font-size: 1rem;
+        border-radius: 4px;
+        margin-top: 5px;
+    }
+
+    .form-error {
+        font-size: 11px;
+        margin-top: 4px;
+    }
+
+    .register-btn {
+        padding: 14px 0;
+        font-size: 1.1rem;
+        border-radius: 5px;
+        margin-top: 12px;
+        margin-bottom: 20px;
+        letter-spacing: 1.5px;
+    }
+
+    .register-link a {
+        font-size: 14px;
+    }
+}

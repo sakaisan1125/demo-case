@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\CommentRequest; // ✅ 追加
 use App\Models\Comment;
 use App\Models\Item;
 
 class CommentController extends Controller
 {
-    public function store(Request $request, Item $item)
+    public function store(CommentRequest $request, Item $item) // ✅ 変更
     {
-        $request->validate([
-            'content' => 'required|string|max:255',
-        ]);
-
+        // ✅ バリデーションは自動実行される
+        
         Comment::create([
             'user_id' => auth()->id(),
             'item_id' => $item->id,

@@ -1,5 +1,4 @@
 <?php
-// PHPファイルの開始を宣言。Laravelの全てのPHPファイルはこれで始まる。
 
 namespace App\Http\Controllers;
 // このファイルがApp\Http\Controllers名前空間に属していることを示す。
@@ -45,7 +44,7 @@ class AddressController extends Controller
     // $requestにはフォームの入力値が入っている。
     {
         $user = Auth::user();
-        $user->zipcode = $request->input('zip');
+        $user->zipcode = $request->input('zipcode');
         $user->address = $request->input('address');
         $user->building = $request->input('building');
         $user->save();

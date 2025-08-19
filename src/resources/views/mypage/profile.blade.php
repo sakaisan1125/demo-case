@@ -51,6 +51,9 @@
         <div class="form-group">
             <label for="building">建物名</label>
             <input type="text" name="building" id="building" value="{{ old('building', $user->building) }}">
+            @error('building')
+                <span class="error-message" style="color:#d00; font-size:13px;">{{ $message }}</span>
+            @enderror
         </div>
 
         <button type="submit" class="profile-update-btn">更新する</button>

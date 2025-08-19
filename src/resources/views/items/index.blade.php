@@ -5,6 +5,11 @@
 @endsection
 
 @section('content')
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 <div class="container">
   {{-- ✅ 検索結果表示エリア --}}
   @if(isset($keyword) && $keyword)

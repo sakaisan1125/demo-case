@@ -57,6 +57,9 @@
         <div class="address-info">
           〒{{ $user->zipcode }}<br>
           {{ $user->address }}
+          @if($user->building)
+          <br>{{ $user->building }}
+          @endif
         </div>
       </div>
       <hr>

@@ -22,12 +22,15 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input): User
     {
         // RegisterRequest によるバリデーションを実行
-        app(RegisterRequest::class)->validateResolved();
+        $request = new RegisterRequest();
+    $validator = Validator::make($input, $request->rules());
+    $validator->setCustomMessages($request->messages());
+    $validator->validate();
 
-        return User::create([
-            'name' => $input['name'],
-            'email' => $input['email'],
-            'password' => Hash::make($input['password']),
-        ]);
+    return User::create([
+        'name' => $input['name'],
+        'email' => $input['email'],
+        'password' => Hash::make($input['password']),
+    ]);
     }
 }

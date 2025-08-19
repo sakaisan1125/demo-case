@@ -1,8 +1,11 @@
 <?php
+// filepath: /home/satos/coachtech/laravel/demo-case/src/routes/web.php
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\MypageController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,32 +18,56 @@ use App\Http\Controllers\MypageController;
 |
 */
 
+
+// ✅ メール認証関連のカスタムルート
+Route::middleware(['auth'])->group(function () {
+    // メール認証誘導画面
+    Route::get('/email/verify', function () {
+        return view('auth.verify-email');
+    })->name('verification.notice');
+    
+    // メール認証処理
+    Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+        $request->fulfill();
+        return redirect('/')->with('success', 'メール認証が完了しました！');
+    })->middleware(['signed'])->name('verification.verify');
+    
+    // 認証メール再送信
+    Route::post('/email/verification-notification', function (Request $request) {
+        $request->user()->sendEmailVerificationNotification();
+        return back()->with('message', '認証メールを再送信しました。');
+    })->middleware(['throttle:6,1'])->name('verification.send');
+});
+
+// ✅ 公開ページ（認証不要）
 Route::get('/', [ItemController::class, 'index'])->name('items.index');
-// Route::get('/items', [ItemController::class, 'index'])->name('items.list');
 Route::get('/items/recommend', [ItemController::class, 'recommend'])->name('items.recommend');
 Route::get('/items/mylist', [ItemController::class, 'mylist'])->name('items.mylist');
 Route::get('/item/{id}', [ItemController::class, 'show'])->name('items.show');
-// 出品ページの表示
-Route::get('/sell', [ItemController::class, 'create'])->name('items.create')->middleware('auth');
 
-// 出品処理の受け取り
-Route::post('/sell', [ItemController::class, 'store'])->name('items.store')->middleware('auth');
-
-// マイページ（ログインユーザーのみ閲覧できるようにミドルウェアauthを付与）
-Route::middleware('auth')->group(function () {
+// ✅ ログイン + メール認証が必要なページ
+Route::middleware(['auth', 'verified'])->group(function () {
+    // 出品機能
+    Route::get('/sell', [ItemController::class, 'create'])->name('items.create');
+    Route::post('/sell', [ItemController::class, 'store'])->name('items.store');
+    
     // マイページ
     Route::get('/mypage', [MypageController::class, 'index'])->name('mypage.index');
     Route::get('/mypage/profile', [MypageController::class, 'editProfile'])->name('mypage.profile.edit');
     Route::post('/mypage/profile', [MypageController::class, 'updateProfile'])->name('mypage.profile.update');
 
     // いいね機能
-    Route::post('/items/{item}/like', [ItemController::class, 'like'])->middleware('auth')->name('items.like');
-    Route::delete('/items/{item}/unlike', [ItemController::class, 'unlike'])->middleware('auth')->name('items.unlike');
-    // ...既存ルート...
+    Route::post('/items/{item}/like', [ItemController::class, 'like'])->name('items.like');
+    Route::delete('/items/{item}/unlike', [ItemController::class, 'unlike'])->name('items.unlike');
+    
+    // 購入機能
     Route::get('/purchase/{item}', [App\Http\Controllers\PurchaseController::class, 'show'])->name('purchase.show');
     Route::post('/purchase/{item}', [App\Http\Controllers\PurchaseController::class, 'store'])->name('purchase.store');
+    
+    // 住所管理
     Route::get('/address/edit', [App\Http\Controllers\AddressController::class, 'edit'])->name('address.edit');
     Route::post('/address/update', [App\Http\Controllers\AddressController::class, 'update'])->name('address.update');
-    // コメント投稿
+    
+    // コメント機能
     Route::post('/items/{item}/comments', [App\Http\Controllers\CommentController::class, 'store'])->name('comments.store');
 });

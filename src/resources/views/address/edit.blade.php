@@ -10,9 +10,9 @@
     <form action="{{ route('address.update') }}" method="POST" class="address-edit-form">
         @csrf
         <div class="form-group">
-            <label for="zip">郵便番号</label>
-            <input type="text" name="zip" id="zip" value="{{ old('zip', $user->zip) }}">
-            @error('zip') <div class="form-error">{{ $message }}</div> @enderror
+            <label for="zipcode">郵便番号</label>
+            <input type="text" name="zipcode" id="zipcode" value="{{ old('zipcode', $user->zipcode) }}">
+            @error('zipcode') <div class="form-error">{{ $message }}</div> @enderror
         </div>
         <div class="form-group">
             <label for="address">住所</label>

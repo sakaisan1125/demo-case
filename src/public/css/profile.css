@@ -99,3 +99,227 @@
     line-height: 1.2;
     white-space: nowrap;
 }
+
+/* ✅ PC対応: レスポンシブのみ（デザインは変更なし） */
+@media (min-width: 1400px) {
+    .profile-container {
+        max-width: 600px;
+        margin: 50px auto;
+        /* ✅ 中央寄せを確実に */
+        padding: 50px 40px 40px 40px;
+        /* ✅ 追加: 確実な中央寄せ */
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .profile-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+
+    .profile-image-area {
+        margin-bottom: 25px;
+    }
+
+    .profile-avatar {
+        width: 100px;
+        height: 100px;
+        margin-right: 30px;
+    }
+
+    .image-upload-btn {
+        font-size: 16px;
+        padding: 8px 20px;
+    }
+
+    .form-group {
+        margin-bottom: 22px;
+    }
+
+    .form-group label {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+
+    .form-group input[type="text"] {
+        padding: 12px 16px;
+        font-size: 16px;
+    }
+
+    .profile-update-btn {
+        padding: 14px 0;
+        font-size: 18px;
+        margin-top: 20px;
+    }
+
+    .error-message {
+        font-size: 14px;
+        margin-top: 6px;
+    }
+}
+
+@media (min-width: 1540px) {
+    .profile-container {
+        max-width: 700px;
+        margin: 60px auto;
+        /* ✅ 中央寄せを確実に */
+        padding: 60px 50px 50px 50px;
+        /* ✅ 追加: 確実な中央寄せ */
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .profile-title {
+        font-size: 32px;
+        margin-bottom: 35px;
+    }
+
+    .profile-avatar {
+        width: 120px;
+        height: 120px;
+        margin-right: 35px;
+    }
+
+    .image-upload-btn {
+        font-size: 18px;
+        padding: 10px 24px;
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+    }
+
+    .form-group label {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .form-group input[type="text"] {
+        padding: 14px 18px;
+        font-size: 18px;
+    }
+
+    .profile-update-btn {
+        padding: 16px 0;
+        font-size: 20px;
+        margin-top: 25px;
+    }
+
+    .error-message {
+        font-size: 15px;
+        margin-top: 8px;
+    }
+}
+
+/* ✅ タブレット対応 */
+@media (min-width: 768px) and (max-width: 1399px) {
+    .profile-container {
+        max-width: 500px;
+        margin: 45px auto;
+        padding: 45px 35px 35px 35px;
+    }
+
+    .profile-title {
+        font-size: 25px;
+        margin-bottom: 27px;
+    }
+
+    .profile-avatar {
+        width: 90px;
+        height: 90px;
+        margin-right: 27px;
+    }
+
+    .image-upload-btn {
+        font-size: 15px;
+        padding: 7px 18px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        font-size: 15px;
+        margin-bottom: 7px;
+    }
+
+    .form-group input[type="text"] {
+        padding: 10px 14px;
+        font-size: 15px;
+    }
+
+    .profile-update-btn {
+        padding: 13px 0;
+        font-size: 17px;
+        margin-top: 15px;
+    }
+
+    .error-message {
+        font-size: 13px;
+        margin-top: 5px;
+    }
+}
+
+/* ✅ モバイル対応 */
+@media (max-width: 767px) {
+    .profile-container {
+        margin: 20px;
+        padding: 25px 20px 20px 20px;
+    }
+
+    .profile-title {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .profile-image-area {
+        margin-bottom: 18px;
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+
+    .profile-avatar {
+        width: 70px;
+        height: 70px;
+        margin-right: 0;
+        margin: 0 auto;
+    }
+
+    .image-upload-btn {
+        font-size: 13px;
+        padding: 5px 12px;
+        margin: 0 auto;
+    }
+
+    .form-group {
+        margin-bottom: 16px;
+    }
+
+    .form-group label {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    .form-group input[type="text"] {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    .profile-update-btn {
+        padding: 11px 0;
+        font-size: 15px;
+        margin-top: 12px;
+    }
+
+    .error-message {
+        font-size: 12px;
+        margin-top: 3px;
+        margin-left: 0;
+        display: block;
+        white-space: normal;
+    }
+}

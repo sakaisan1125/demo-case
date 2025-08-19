@@ -36,12 +36,12 @@
             <form action="{{ route('items.unlike', $item) }}" method="POST" style="display:inline;">
               @csrf
               @method('DELETE')
-              <button type="submit" class="like-btn liked">♥</button>
+              <button type="submit" class="like-btn liked">★</button>
             </form>
           @else
             <form action="{{ route('items.like', $item) }}" method="POST" style="display:inline;">
               @csrf
-              <button type="submit" class="like-btn">♡</button>
+              <button type="submit" class="like-btn">☆</button>
             </form>
           @endif
           <span class="like-count">{{ $item->likes->count() }}</span>
@@ -59,7 +59,7 @@
     @guest
       <div class="like-comment-area">
         <div class="like-area">
-          <span class="like-btn disabled" title="ログインしてください">♡</span>
+          <span class="like-btn disabled" title="ログインしてください">☆</span>
           <span class="like-count">{{ $item->likes->count() }}</span>
         </div>
         
@@ -123,17 +123,34 @@
           <span class="avatar"></span>
           <span class="username">{{ $comment->user->name }}</span>
           <br>
-          <div class="comment-box">{{ $comment->content }}</div>
+          <div class="comment-box">{!! nl2br(e($comment->content)) !!}</div>
         </div>
       @empty
         <div class="no-comments">こちらにコメントが入ります。</div>
       @endforelse
       {{-- コメント投稿フォーム --}}
       @auth
+        {{-- ✅ 成功メッセージの表示 --}}
+        @if (session('success'))
+          <div class="alert alert-success">
+            {{ session('success') }}
+          </div>
+        @endif
+
         <form action="{{ route('comments.store', $item) }}" method="POST">
           @csrf
           <div class="item-comment">商品へのコメント</div>
-          <textarea name="content" rows="10" class="comment-textarea" required></textarea>
+          
+          {{-- ✅ バリデーションエラーの表示 --}}
+          @error('content')
+            <div class="error-message">{{ $message }}</div>
+          @enderror
+          
+          {{-- ✅ 入力値保持とエラー時のスタイル適用 --}}
+          <textarea name="content" 
+                    rows="10" 
+                    class="comment-textarea @error('content') error @enderror" 
+                    >{{ old('content') }}</textarea>
           <br>
           <button type="submit" class="comment-btn">コメントを送信する</button>
         </form>

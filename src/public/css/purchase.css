@@ -196,3 +196,32 @@ hr {
 }
 
 
+/* 1400px～1540pxのPC画面対応 */
+@media (min-width: 1400px) and (max-width: 1540px) {
+    .purchase-container {
+        max-width: 1200px;
+        gap: 64px;
+        margin: 64px auto;
+    }
+
+    .purchase-main {
+        width: 520px;
+        min-width: 360px;
+        padding: 40px;
+    }
+
+    .purchase-summary {
+        width: 380px;
+        padding: 40px 32px 32px 32px;
+    }
+
+    .item-header {
+        gap: 48px;
+    }
+
+    .item-image-placeholder,
+    .item-image {
+        width: 180px;
+        height: 180px;
+    }
+}

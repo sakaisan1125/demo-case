@@ -1,0 +1,39 @@
+<mxfile host="65bd71144e">
+    <diagram id="-l-lH4xLclml93OvtIsm" name="ページ2">
+        <mxGraphModel dx="2617" dy="2340" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="_U-Uk0ZBiBo6jpicz0lD" name="ページ3">
+        <mxGraphModel dx="981" dy="878" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="NmZtt9iRCAyX6mzWHMvo-2" value="users&#xa;id: PK&#xa;name&#xa;email (UNIQUE)&#xa;email_verified_at&#xa;password&#xa;two_factor_secret&#xa;two_factor_recovery_codes&#xa;two_factor_confirmed_at&#xa;profile_image&#xa;zipcode&#xa;address&#xa;building&#xa;remember_token&#xa;created_at&#xa;updated_at" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="30" width="220" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="NmZtt9iRCAyX6mzWHMvo-3" value="items&#xa;id: PK&#xa;user_id: FK&#xa;name&#xa;description&#xa;brand&#xa;price&#xa;condition&#xa;image_path&#xa;is_sold&#xa;created_at&#xa;updated_at" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF3E0;" parent="1" vertex="1">
+                    <mxGeometry x="310" y="30" width="220" height="220" as="geometry"/>
+                </mxCell>
+                <mxCell id="NmZtt9iRCAyX6mzWHMvo-4" value="categories&#xa;id: PK&#xa;name (UNIQUE)&#xa;created_at&#xa;updated_at" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="40" width="200" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="NmZtt9iRCAyX6mzWHMvo-5" value="item_category&#xa;id: PK&#xa;item_id: FK&#xa;category_id: FK" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F3E5F5;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="180" width="200" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="NmZtt9iRCAyX6mzWHMvo-6" value="comments&#xa;id: PK&#xa;item_id: FK&#xa;user_id: FK&#xa;content&#xa;created_at&#xa;updated_at" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFEBEE;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="530" width="220" height="140" as="geometry"/>
+                </mxCell>
+                <mxCell id="NmZtt9iRCAyX6mzWHMvo-7" value="likes&#xa;id: PK&#xa;item_id: FK&#xa;user_id: FK&#xa;created_at&#xa;updated_at" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E0F7FA;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="300" width="220" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="NmZtt9iRCAyX6mzWHMvo-8" value="purchases&#xa;id: PK&#xa;item_id: FK&#xa;user_id: FK&#xa;address&#xa;payment_method&#xa;created_at&#xa;updated_at" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFDE7;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="300" width="220" height="160" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

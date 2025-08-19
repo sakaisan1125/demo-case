@@ -1,0 +1,40 @@
+User::factory()->create(['email_verified_at' => now()]);
+$user = App\Models\User::find(1); // 1は対象ユーザーID
+$user->email_verified_at = now();
+$user->save();
+$user = App\Models\User::find(2); // 1は対象ユーザーID
+$user->email_verified_at = now();
+$user->save();
+$user = App\Models\User::find(3); // 1は対象ユーザーID
+$user->email_verified_at = now();
+$user->save();
+$user = App\Models\User::find(2); // 1は対象ユーザーID
+$user->email_verified_at = now();
+$user->save();
+$user = App\Models\User::find(3); // 1は対象ユーザーID
+$user->email_verified_at = now();
+$user->save();
+$user = App\Models\User::find(1); // 1は対象ユーザーID
+$user->email_verified_at = now();
+$user->save();
+exit
+$user = App\Models\User::find(2); // 1は対象ユーザーID
+$user->email_verified_at = now();
+$user->save();
+App\Models\User::where('email', 'test@example.com')->delete();
+exit
+$user = App\Models\User::find(2); // 1は対象ユーザーID
+$user->email_verified_at = now();
+$user->save();
+$user = App\Models\User::find(3); // 1は対象ユーザーID
+$user->email_verified_at = now();
+$user->save();
+$user = App\Models\User::find(4); // 1は対象ユーザーID
+$user->email_verified_at = now();
+$user->save();
+exit
+$user = App\Models\User::find(2); // 1は対象ユーザーID
+$user->email_verified_at = now();
+$user->save();
+esit
+exit

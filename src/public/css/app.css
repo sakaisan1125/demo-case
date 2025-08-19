@@ -115,3 +115,210 @@ body {
     background:#222;
         color: #fff;
 }
+
+/* ✅ PC対応: 大画面レスポンシブ */
+@media (min-width: 1400px) {
+
+    /* ヘッダー */
+    .header {
+        padding: 12px 40px;
+        min-height: 70px;
+    }
+
+    .header__left img {
+        height: 40px;
+    }
+
+    /* 検索エリア */
+    .header__center {
+        max-width: 600px;
+    }
+
+    .search-form {
+        width: 100%;
+    }
+
+    .search-input {
+        width: 100%;
+        max-width: 500px;
+        font-size: 16px;
+        padding: 12px 20px;
+        border-radius: 6px;
+    }
+
+    /* ナビゲーション */
+    .header__right {
+        gap: 20px;
+    }
+
+    .header__right a,
+    .header__right .logout-btn,
+    .header__right .login-btn {
+        font-size: 16px;
+        padding: 10px 24px;
+        margin-left: 0;
+        border-radius: 6px;
+    }
+
+    .header__right .item-create-btn {
+        font-size: 16px;
+        padding: 8px 20px;
+        margin-left: 0;
+        border-radius: 6px;
+        border-width: 2px;
+    }
+
+    .login-btn {
+        padding: 8px 20px;
+        font-size: 16px;
+        margin-left: 0;
+        border-width: 2px;
+        border-radius: 6px;
+    }
+
+    /* コンテナ */
+    .container {
+        max-width: 1200px;
+        padding: 40px 20px;
+    }
+
+    /* フォーカス状態の改善 */
+    .search-input:focus {
+        box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+    }
+
+    /* ホバー効果の強化 */
+    .header__right a:hover,
+    .header__right .logout-btn:hover,
+    .header__right .login-btn:hover {
+        transform: translateY(-1px);
+        transition: all 0.3s;
+    }
+
+    .logout-btn:hover {
+        background: #333;
+    }
+}
+
+@media (min-width: 1540px) {
+
+    /* 特大画面対応 */
+    .header {
+        padding: 15px 60px;
+        min-height: 80px;
+    }
+
+    .header__left img {
+        height: 45px;
+    }
+
+    .search-input {
+        max-width: 600px;
+        font-size: 18px;
+        padding: 14px 24px;
+    }
+
+    .header__right a,
+    .header__right .logout-btn,
+    .header__right .login-btn {
+        font-size: 18px;
+        padding: 12px 28px;
+    }
+
+    .header__right .item-create-btn {
+        font-size: 18px;
+        padding: 10px 24px;
+    }
+
+    .login-btn {
+        padding: 10px 24px;
+        font-size: 18px;
+    }
+
+    .container {
+        max-width: 1400px;
+        padding: 50px 40px;
+    }
+}
+
+/* ✅ タブレット対応の改善 */
+@media (min-width: 768px) and (max-width: 1399px) {
+    .header {
+        padding: 10px 20px;
+        min-height: 60px;
+    }
+
+    .header__left img {
+        height: 35px;
+    }
+
+    .search-input {
+        width: 280px;
+        font-size: 15px;
+        padding: 8px 16px;
+    }
+
+    .header__right a,
+    .header__right .logout-btn,
+    .header__right .login-btn {
+        font-size: 15px;
+        padding: 9px 22px;
+    }
+
+    .container {
+        padding: 30px;
+    }
+}
+
+/* ✅ モバイル対応の改善 */
+@media (max-width: 767px) {
+    .header {
+        padding: 8px 15px;
+        flex-wrap: wrap;
+        min-height: 50px;
+    }
+
+    .header__left img {
+        height: 25px;
+    }
+
+    .header__center {
+        order: 3;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .search-input {
+        width: 100%;
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    .header__right {
+        gap: 10px;
+    }
+
+    .header__right a,
+    .header__right .logout-btn,
+    .header__right .login-btn {
+        font-size: 12px;
+        padding: 6px 12px;
+        margin-left: 0;
+    }
+
+    .header__right .item-create-btn {
+        font-size: 12px;
+        padding: 4px 8px;
+        margin-left: 0;
+    }
+
+    .login-btn {
+        padding: 4px 8px;
+        font-size: 12px;
+        margin-left: 0;
+    }
+
+    .container {
+        padding: 15px;
+    }
+}

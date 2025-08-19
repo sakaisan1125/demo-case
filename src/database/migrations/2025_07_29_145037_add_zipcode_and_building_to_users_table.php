@@ -6,28 +6,27 @@ use Illuminate\Support\Facades\Schema;
 
 class AddZipcodeAndBuildingToUsersTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('zipcode')->nullable()->after('profile_image');
-            $table->string('building')->nullable()->after('address');
+            // zipcode は CreateUsersTable ですでに存在するため追加不要
+            // $table->string('zipcode')->nullable()->after('profile_image');
+
+            // building だけ追加（なければ）
+            if (!Schema::hasColumn('users', 'building')) {
+                $table->string('building')->nullable()->after('address');
+            }
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['zipcode', 'building']);
+            // 追加したのは building だけなので、building のみ削除
+            if (Schema::hasColumn('users', 'building')) {
+                $table->dropColumn('building');
+            }
+            // zipcode は元からあるので絶対に drop しない
         });
     }
 }

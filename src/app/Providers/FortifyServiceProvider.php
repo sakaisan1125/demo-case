@@ -18,6 +18,7 @@ use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Validation\ValidationException;
 
 
 class FortifyServiceProvider extends ServiceProvider
@@ -66,6 +67,8 @@ class FortifyServiceProvider extends ServiceProvider
         return view('auth.register');
         });
 
+        Fortify::verifyEmailView('auth.verify-email');
+
         Fortify::authenticateUsing(function ($request) {
         try {
             app(LoginRequest::class)->validateResolved();
@@ -80,9 +83,9 @@ class FortifyServiceProvider extends ServiceProvider
             return $user;
         }
         // ここでエラーメッセージを返す
-        session()->flash('login_error', 'ログイン情報が登録されていません');
-
-        return null;
+        throw ValidationException::withMessages([
+            'email' => ['ログイン情報が登録されていません'],
+        ]);
         });
         }
 

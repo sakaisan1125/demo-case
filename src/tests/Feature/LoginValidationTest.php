@@ -47,7 +47,7 @@ class LoginValidationTest extends TestCase
             'password' => 'wrongpassword',
         ]);
 
-        $response->assertSessionHas('login_error', 'ログイン情報が登録されていません');
+        $response->assertSessionHasErrors(['email' => 'ログイン情報が登録されていません']);
         $response->assertRedirect();
     }
 

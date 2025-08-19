@@ -61,8 +61,7 @@ class MypageController extends Controller
 
         $user->update($data); // ユーザー情報を更新
 
-        return redirect()->route('mypage.index')->with('success', 'プロフィールを更新しました');
-        // マイページにリダイレクトし、成功メッセージを表示
+        return redirect('/')->with('success', 'プロフィールを更新しました');
     }
 
 }

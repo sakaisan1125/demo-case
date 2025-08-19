@@ -12,8 +12,13 @@ class ItemController extends Controller
 {
     public function index(Request $request)
     {
+        // ✅ 追加：ログイン済み かつ メール未認証 の場合のみリダイレクト
+        if (auth()->check() && !auth()->user()->hasVerifiedEmail()) {
+            return redirect('/email/verify');
+        }
+
         $tab = $request->query('tab');
-        $keyword = $request->query('keyword'); // ✅ 検索キーワード取得
+        $keyword = $request->query('keyword'); 
 
         if ($tab === 'mylist') {
             if (auth()->check()) {
@@ -33,7 +38,6 @@ class ItemController extends Controller
                 
                 $items = $items->get();
             } else {
-                // 未認証なら空
                 $items = collect();
             }
         } else {
