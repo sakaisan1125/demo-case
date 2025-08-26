@@ -14,6 +14,11 @@ services:
   php:
     build: ./docker/php
     user: "${USER_ID:-1000}:${GROUP_ID:-1000}"
+    environment:
+      HOME: /var/www
+      XDG_CONFIG_HOME: /var/www/.config
+      COMPOSER_HOME: /var/www/.composer
+    working_dir: /var/www                 
     volumes:
       - ./src:/var/www
 

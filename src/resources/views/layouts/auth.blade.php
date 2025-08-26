@@ -11,7 +11,9 @@
 <body>
   <header class="header">
     <div class="header__left">
-      <img src="{{ asset('images/coachtech-logo.svg') }}" alt="COACHTECH ロゴ">
+      <a href="{{ route('items.index') }}">
+          <img src="{{ asset('images/coachtech-logo.svg') }}" alt="COACHTECH ロゴ">
+      </a>
     </div>
   </header>
   <main>

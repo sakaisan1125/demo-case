@@ -10,7 +10,7 @@
   {{-- 画像エリア --}}
   <div class="item-detail-image">
     @if ($item->image_url)
-      {{-- ✅ アクセサーを使用（最も推奨） --}}
+      {{-- ✅ アクセサーを使用 --}}
       <img src="{{ $item->image_url }}" alt="商品画像">
     @else
       <div class="no-image">画像がありません</div>
@@ -92,17 +92,17 @@
     <div class="item-section">
       <div class="section-title">商品説明</div>
       <div class="item-description">
-        <div>カラー：{{ $item->color ?? '未設定' }}</div>
-        <div>{{ $item->condition }}</div>
-        <div>{{ $item->description }}</div>
-        <div>購入後、即発送いたします。</div>
+        <!-- <div>カラー：{{ $item->color ?? '未設定' }}</div> -->
+        <!-- <div>{{ $item->condition }}</div> -->
+        <div>{!! nl2br(e($item->description)) !!}</div>
+        <!-- <div>購入後、即発送いたします。</div> -->
       </div>
     </div>
 
     {{-- 商品の情報 --}}
     <div class="item-section">
       <div class="section-title">商品の情報</div>
-      <div>
+      <div class="category-list">
         <span class="category-label">カテゴリー</span>
         @foreach($item->categories as $category)
         <span class="category-badge">{{ $category->name }}</span>
@@ -120,7 +120,11 @@
        {{-- 既存のコメント表示 --}}
       @forelse($item->comments as $comment)
         <div class="comment">
-          <span class="avatar"></span>
+          @if ($comment->user->profile_image)
+            <img src="{{ Storage::url($comment->user->profile_image) }}" class="avatar" alt="プロフィール画像">
+          @else
+            <span class="avatar"></span>
+          @endif
           <span class="username">{{ $comment->user->name }}</span>
           <br>
           <div class="comment-box">{!! nl2br(e($comment->content)) !!}</div>

@@ -9,13 +9,13 @@ return [
     'max' => [
         'string' => ':attributeは:max文字以内で入力してください',
     ],
-    'confirmed' => ':attributeと一致しません',        // 🔧 修正
-    'unique' => 'この:attributeは既に登録されています',        // 🔧 追加
+    'confirmed' => ':attributeと一致しません',        
+    'unique' => 'この:attributeは既に登録されています',        
 
     'attributes' => [
-        'name' => 'ユーザー名',                              // 🔧 追加
+        'name' => 'ユーザー名',                              
         'email' => 'メールアドレス',
         'password' => 'パスワード',
-        'password_confirmation' => '確認用パスワード',         // 🔧 追加
+        'password_confirmation' => '確認用パスワード',         
     ],
 ];

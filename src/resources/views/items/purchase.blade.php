@@ -42,7 +42,7 @@
       
       <div class="payment-area">
         <label>支払い方法</label>
-        <select name="payment_method" id="payment_method" required class="payment-select">
+        <select name="payment_method" id="payment_method" class="payment-select">
           <option value="" hidden disabled selected>選択してください</option>
           <option value="convenience">コンビニ支払い</option>
           <option value="card">カード支払い</option>

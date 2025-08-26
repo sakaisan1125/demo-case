@@ -54,7 +54,6 @@ class LoginValidationTest extends TestCase
     /** @test */
     public function user_can_login_with_valid_credentials()
     {
-        // User::factory()ではなくUser::create()を使用
         $user = User::create([
             'name' => 'テストユーザー',
             'email' => 'test@example.com',
@@ -73,7 +72,6 @@ class LoginValidationTest extends TestCase
     /** @test */
     public function user_can_logout_successfully()
     {
-        // User::factory()ではなくUser::create()を使用
         $user = User::create([
             'name' => 'テストユーザー',
             'email' => 'test@example.com',

@@ -107,6 +107,13 @@ a.buy-btn:hover {
     padding: 5px 0;
 }
 
+/* カテゴリー表示を折り返す */
+.item-section .category-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
 .item-description h3 {
     font-size: 16px;
     font-weight: bold;
@@ -123,7 +130,7 @@ a.buy-btn:hover {
     color: #000000;
     border-radius: 24px;
     padding: 4px 16px;
-    margin-left: 10px;
+    margin: 4px;
 }
 
 .item-condition {
@@ -284,16 +291,13 @@ a.buy-btn:hover {
     opacity: 0.7;
     position: relative;
     pointer-events: none;
-    /* クリック無効化 */
 }
 
 .buy-btn.disabled:hover {
     background: #ccc !important;
     transform: none;
-    /* ホバーエフェクトを無効化 */
 }
 
-/* SOLDバッジ専用スタイル */
 .buy-btn.disabled.sold {
     background: #999 !important;
     color: #fff !important;
@@ -307,14 +311,12 @@ a.buy-btn:hover {
     font-size: 14px;
 }
 
-/* 自分の商品専用スタイル */
 .buy-btn.disabled:not(.sold)::before {
     content: "👤 ";
     margin-right: 8px;
     font-size: 14px;
 }
 
-/* レスポンシブ対応 */
 @media (max-width: 800px) {
     .buy-btn.disabled::before {
         font-size: 12px;
@@ -337,4 +339,4 @@ a.buy-btn:hover {
     .item-detail-info {
         min-width: 360px;
     }
-}
+}     

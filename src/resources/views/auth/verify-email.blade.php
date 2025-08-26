@@ -26,22 +26,22 @@
             </div>
         @endif
         
-        {{-- 認証はこちらからボタン（グレーボタン） --}}
+        {{-- 認証はこちらからボタン --}}
         <div style="margin-bottom: 40px;">
-            <a href="#" style="
-                display: inline-block;
-                background-color: #d6d6d6;
-                color: #000000ff;
-                padding: 15px 30px;
-                border-radius: 6px;
-                text-decoration: none;
-                font-size: 16px;
-                font-weight: 500;
-                border: none;
-                cursor: not-allowed;
-            ">
-                認証はこちらから
-            </a>
+            <a href="{{ route('email.verified') }}" style="
+            display: inline-block;
+            background-color: #d6d6d6;
+            color: #000000ff;
+            padding: 15px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+        ">
+            認証はこちらから
+        </a>
         </div>
         
         {{-- 認証メール再送リンク --}}
@@ -52,7 +52,7 @@
                     background: none;
                     border: none;
                     color: #35a5ff;
-                    text-decoration: underline;
+                    text-decoration: none;
                     cursor: pointer;
                     font-size: 16px;
                     padding: 0;
@@ -63,7 +63,7 @@
         </div>
         
         {{-- ログアウトリンク --}}
-        <div>
+        {{-- <div>
             <form method="POST" action="{{ route('logout') }}" style="display: inline;">
                 @csrf
                 <button type="submit" style="
@@ -78,7 +78,7 @@
                     ログアウト
                 </button>
             </form>
-        </div>
+        </div> --}}
     </div>
 </div>
 @endsection

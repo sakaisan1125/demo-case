@@ -23,7 +23,7 @@ class MypageController extends Controller
                 $query->where('user_id', $user->id);
             })->latest()->get();
         } else {
-            // 出品した商品を取得（既存のロジック）
+            // 出品した商品を取得
             $items = $user->items()->latest()->get();
         }
 

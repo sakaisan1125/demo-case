@@ -21,6 +21,20 @@ class ExhibitionRequest extends FormRequest
             'category_id.*' => 'integer|exists:categories,id',
             'condition'   => 'required|string',
             'price'       => 'required|integer|min:0',
+            'brand'       => 'nullable|string|max:255',
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'name' => '商品名',
+            'description' => '商品説明',
+            'image' => '商品画像',
+            'category_id' => '商品のカテゴリー',
+            'condition' => '商品の状態',
+            'price' => '商品価格',
+            'brand' => 'ブランド',
         ];
     }
 }

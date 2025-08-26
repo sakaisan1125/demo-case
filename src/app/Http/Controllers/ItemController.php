@@ -12,7 +12,6 @@ class ItemController extends Controller
 {
     public function index(Request $request)
     {
-        // ✅ 追加：ログイン済み かつ メール未認証 の場合のみリダイレクト
         if (auth()->check() && !auth()->user()->hasVerifiedEmail()) {
             return redirect('/email/verify');
         }

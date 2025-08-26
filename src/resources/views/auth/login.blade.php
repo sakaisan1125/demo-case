@@ -26,7 +26,7 @@
       @error('password') <div class="form-error">{{ $message }}</div> @enderror
     </div>
 
-    <button type="submit" class="register-btn">ログイン</button>
+    <button type="submit" class="register-btn">ログインする</button>
   </form>
   <div class="register-link">
     <a href="{{ route('register') }}">会員登録はこちら</a>

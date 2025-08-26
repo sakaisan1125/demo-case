@@ -162,7 +162,6 @@
     margin-top: 0;
     font-weight: normal;
     letter-spacing: 1px;
-    /* ✅ パディングを削除 */
     padding: 0;
     min-height: auto;
 }
@@ -286,15 +285,14 @@
         border-radius: 2px;
     }
 
-    /* ✅ グリッドではなくflexで左寄せ */
     .item-list {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
         gap: 40px;
         margin-top: 50px;
         padding-left: 50px;
         padding-right: 50px;
-        flex-wrap: wrap;
-        justify-content: flex-start;
+        justify-items: center;
     }
 
     .item-card {
@@ -398,11 +396,12 @@
 
     .item-list {
         gap: 50px;
+        grid-template-columns: repeat(4, 1fr);
         margin-top: 60px;
         padding-left: 60px;
         padding-right: 60px;
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-rows: auto;
         justify-content: flex-start;
     }
 

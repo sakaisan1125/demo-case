@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CommentRequest; // ✅ 追加
+use App\Http\Requests\CommentRequest;
 use App\Models\Comment;
 use App\Models\Item;
 
 class CommentController extends Controller
 {
-    public function store(CommentRequest $request, Item $item) // ✅ 変更
+    public function store(CommentRequest $request, Item $item) 
     {
         // ✅ バリデーションは自動実行される
         

@@ -58,17 +58,18 @@ h2 {
 }
 
 .image-select-btn {
-    background: #ff5c5c;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 8px 16px;
+    background: #fff;
+    /* background: #ff5c5c; */
+    color: #ff5c5c;
+    border: 3px solid #ff5c5c;
+    border-radius: 12px;
+    padding: 12px 20px;
     font-size: 0.85rem;
     cursor: pointer;
     display: inline-block;
-        /* ✅ 追加 */
     pointer-events: auto;
-        /* ✅ 追加 */
+    font-weight: bold;
+
 }
 
 #imagePreview {
@@ -279,7 +280,7 @@ textarea {
     }
 
     .image-select-btn:hover {
-        background: #ff4444;
+        background: #ffbcbc;
         transform: scale(1.05);
     }
 

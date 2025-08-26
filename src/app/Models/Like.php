@@ -21,8 +21,7 @@ class Like extends Model
 
     protected $fillable = [
     'item_id',
-    'user_id', // もし直接入れることがあれば
-    // 必要なら 'user_id' なども
+    'user_id', 
     ];
 
 

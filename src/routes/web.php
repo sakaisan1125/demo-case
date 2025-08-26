@@ -37,7 +37,17 @@ Route::middleware(['auth'])->group(function () {
         $request->user()->sendEmailVerificationNotification();
         return back()->with('message', '認証メールを再送信しました。');
     })->middleware(['throttle:6,1'])->name('verification.send');
-});
+
+    // Route::get('/email/verified', function () {
+    //     return view('auth.verified');
+    // })->name('email.verified');
+    Route::get('/email/verified', function () {
+    if (auth()->user()->hasVerifiedEmail()) {
+        return redirect()->route('items.index');
+    }
+    return view('auth.verified');
+    })->name('email.verified');
+    });
 
 // ✅ 公開ページ（認証不要）
 Route::get('/', [ItemController::class, 'index'])->name('items.index');

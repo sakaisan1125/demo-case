@@ -112,12 +112,11 @@ body {
 .header {
     background-color: #000;
     color: #fff;
-    padding: 8px 12px;
+    padding: 24px 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: auto;
-    /* 必要ならheight: 60px; を削除 */
 }
 
 
@@ -125,13 +124,11 @@ body {
     height: 30px;
 }
 
-/* ✅ PC対応: 認証フォームレスポンシブ（中央寄せ修正版） */
 @media (min-width: 1400px) {
     .register-wrap {
         margin: 80px auto;
         max-width: 700px;
         padding: 0 30px 100px 30px;
-        /* ✅ 修正: left/transformを削除してmargin: autoのみ */
     }
 
     .register-title {
@@ -215,7 +212,6 @@ body {
         margin: 100px auto;
         max-width: 800px;
         padding: 0 40px 120px 40px;
-        /* ✅ 修正: left/transformを削除してmargin: autoのみ */
     }
 
     .register-title {
@@ -266,7 +262,6 @@ body {
     }
 }
 
-/* ✅ タブレット対応の改善 */
 @media (min-width: 768px) and (max-width: 1399px) {
     .register-wrap {
         margin: 75px auto;
@@ -313,7 +308,6 @@ body {
     }
 }
 
-/* ✅ モバイル対応の改善 */
 @media (max-width: 767px) {
     .register-wrap {
         margin: 40px auto;
