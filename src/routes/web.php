@@ -4,6 +4,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\MypageController;
+use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\AddressController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 
@@ -51,8 +54,6 @@ Route::middleware(['auth'])->group(function () {
 
 // ✅ 公開ページ（認証不要）
 Route::get('/', [ItemController::class, 'index'])->name('items.index');
-Route::get('/items/recommend', [ItemController::class, 'recommend'])->name('items.recommend');
-Route::get('/items/mylist', [ItemController::class, 'mylist'])->name('items.mylist');
 Route::get('/item/{id}', [ItemController::class, 'show'])->name('items.show');
 
 // ✅ ログイン + メール認証が必要なページ
@@ -71,13 +72,17 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/items/{item}/unlike', [ItemController::class, 'unlike'])->name('items.unlike');
     
     // 購入機能
-    Route::get('/purchase/{item}', [App\Http\Controllers\PurchaseController::class, 'show'])->name('purchase.show');
-    Route::post('/purchase/{item}', [App\Http\Controllers\PurchaseController::class, 'store'])->name('purchase.store');
+    Route::get('/purchase/{item}', [PurchaseController::class, 'show'])->name('purchase.show');
+    Route::post('/purchase/{item}', [PurchaseController::class, 'store'])->name('purchase.store');
+    Route::get('/purchase/{item}/thanks', [PurchaseController::class, 'thanks'])->name('purchase.thanks');
+    Route::get('/purchase/konbini/confirm', [PurchaseController::class, 'confirmKonbini'])->name('purchase.konbini.confirm');
+    Route::get('/purchase/{item}/cancel', [PurchaseController::class, 'cancel'])->name('purchase.cancel');
+
     
     // 住所管理
-    Route::get('/address/edit', [App\Http\Controllers\AddressController::class, 'edit'])->name('address.edit');
-    Route::post('/address/update', [App\Http\Controllers\AddressController::class, 'update'])->name('address.update');
-    
+    Route::get('/address/edit', [AddressController::class, 'edit'])->name('address.edit');
+    Route::post('/address/update', [AddressController::class, 'update'])->name('address.update');
+
     // コメント機能
-    Route::post('/items/{item}/comments', [App\Http\Controllers\CommentController::class, 'store'])->name('comments.store');
+    Route::post('/items/{item}/comments', [CommentController::class, 'store'])->name('comments.store');
 });

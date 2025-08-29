@@ -149,18 +149,6 @@
         position: relative;
     }
 
-    .tab.active::after {
-        content: '';
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: #ff2424;
-        border-radius: 2px;
-    }
-
-    /* グリッドレイアウトへ変更 */
     .item-list {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -342,7 +330,6 @@
     }
 }
 
-/* ✅ モバイル対応の改善 */
 @media (max-width: 767px) {
     .container {
         margin: 20px auto;

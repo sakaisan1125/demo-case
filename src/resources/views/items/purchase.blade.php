@@ -5,6 +5,11 @@
 @endsection
 
 @section('content')
+@if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
 <form action="/purchase/{{ $item->id }}" method="POST">
   @csrf
   
@@ -44,7 +49,8 @@
         <label>支払い方法</label>
         <select name="payment_method" id="payment_method" class="payment-select">
           <option value="" hidden disabled selected>選択してください</option>
-          <option value="convenience">コンビニ支払い</option>
+          <!-- <option value="convenience">コンビニ支払い</option> -->
+          <option value="konbini">コンビニ支払い</option>
           <option value="card">カード支払い</option>
         </select>
       </div>

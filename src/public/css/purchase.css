@@ -97,7 +97,7 @@ hr {
 .purchase-summary {
     width: 340px;
     background: #fff;
-    border: 2px solid #bbb;
+    /* border: 2px solid #bbb; */
     border-radius: 8px;
     padding: 32px 24px 24px 24px;
     box-sizing: border-box;
@@ -196,7 +196,6 @@ hr {
 }
 
 
-/* 1400px～1540pxのPC画面対応 */
 @media (min-width: 1400px) and (max-width: 1540px) {
     .purchase-container {
         max-width: 1200px;
@@ -223,5 +222,67 @@ hr {
     .item-image {
         width: 180px;
         height: 180px;
+    }
+}
+
+/* 1540px以上の大画面対応 */
+@media (min-width: 1540px) {
+    .purchase-container {
+        max-width: 1400px;
+        gap: 80px;
+        margin: 80px auto;
+    }
+
+    .purchase-main {
+        width: 600px;
+        min-width: 400px;
+        padding: 60px;
+    }
+
+    .purchase-summary {
+        width: 420px;
+        padding: 60px 40px 40px 40px;
+    }
+
+    .item-header {
+        gap: 64px;
+    }
+
+    .item-image-placeholder,
+    .item-image {
+        width: 220px;
+        height: 220px;
+    }
+}
+
+/* モバイル対応 */
+@media (max-width: 767px) {
+    .purchase-container {
+        flex-direction: column;
+        gap: 0;
+        max-width: 98vw;
+        margin: 10px auto;
+        align-items: stretch;
+    }
+
+    .purchase-main,
+    .purchase-summary {
+        width: 100%;
+        min-width: 0;
+        padding: 16px;
+        margin: 0 auto 16px auto;
+        box-sizing: border-box;
+    }
+
+    .item-header {
+        flex-direction: column;
+        gap: 16px;
+        margin-bottom: 16px;
+    }
+
+    .item-image-placeholder,
+    .item-image {
+        width: 100px;
+        height: 100px;
     }
 }

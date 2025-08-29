@@ -10,7 +10,6 @@ body {
     color: #333;
 }
 
-/* ヘッダー */
 .header {
     background-color: #000;
     color: #fff;
@@ -111,8 +110,8 @@ body {
 }
 
 .login-btn:hover {
-    background:#222;
-        color: #fff;
+    background: #222;
+    color: #fff;
 }
 
 @media (min-width: 1400px) {
@@ -130,6 +129,8 @@ body {
     /* 検索エリア */
     .header__center {
         max-width: 600px;
+        margin: 0 36px;
+            /* ← 左右に余白を追加 */
     }
 
     .search-form {
