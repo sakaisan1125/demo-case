@@ -26,11 +26,16 @@
    MAIL_FROM_ADDRESS=noreply@coachtech.com
    MAIL_FROM_NAME="COACHTECH"
    APP_URL=http://localhost
+
+   STRIPE_KEY=your_stripe_key_here
+   STRIPE_SECRET=your_stripe_secret_here
    ```
+   ※STRIPE_KEYとSTRIPE_SECRETはStripeのダッシュボードから取得してください。
 4. アプリケーションキー生成  
    ```bash
    php artisan key:generate
    ```
+
 5. マイグレーション＆シーディング  
    ```bash
    php artisan migrate --seed
@@ -48,6 +53,7 @@
 - MySQL 8.0.26
 - Nginx / Docker / docker-compose
 - phpMyAdmin / MailHog
+- Stripe（決済機能）
 
 ---
 
@@ -88,7 +94,7 @@
 - 配送先住所の確認 / 変更
 - 購入確定
 - コンビニ決済対応  
-  ※Stripeウェブフック未実装のため、コンビニ支払い後は手動で購入完了処理を行ってください（下記参照）
+  ※Stripeウェブフック未対応のため、コンビニ支払い後は手動で購入完了処理（下記参照）が必要です。
 
 ### コメント・いいね
 - 商品へのコメント投稿 / 表示
@@ -124,7 +130,7 @@
 
 ## コンビニ決済の購入完了方法
 
-本アプリはStripeのウェブフック未実装のため、  
+本アプリはStripeのウェブフック未対応のため、  
 コンビニ支払い後は「支払い済みを確認」ボタン（`/purchase/konbini/confirm?session_id=xxxx`）にアクセスして購入完了処理を行ってください。
 
 ### session_idの確認方法
